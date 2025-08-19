@@ -1,0 +1,11 @@
+.lyribot {
+  width: 50px;               // size of the circle
+  height: 50px;
+  border-radius: 50%;        // makes it a perfect circle
+  background-image: url("https://res-console.cloudinary.com/dt4jctqz1/thumbnails/v1/image/upload/v1755585958/bHlyaWNfbGFiX2xvZ29fcHFoaG9o/preview");
+  background-size: cover;    // fill the circle completely
+  background-position: center; // center the image
+  background-repeat: no-repeat;
+  cursor: pointer;           // indicates clickable
+  display: inline-block;
+}
