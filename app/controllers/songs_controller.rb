@@ -56,7 +56,9 @@ class SongsController < ApplicationController
         flash.now[:alert] = "Email cannot be blank."
         render :share, status: :unprocessable_entity
       end
-      
+    end
+  end
+
   def new
     @song = Song.new
   end

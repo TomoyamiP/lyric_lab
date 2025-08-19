@@ -13,3 +13,7 @@
     <%= link_to "Back", songs_path, class: "btn btn-secondary ms-2" %>
   <% end %>
 </div>
+
+<div data-controller="share">
+  <button data-action="click-> share#share" data-song-id="<%= @song.id %>" data-title="<%= @song.title %>">Share</button>
+</div>
