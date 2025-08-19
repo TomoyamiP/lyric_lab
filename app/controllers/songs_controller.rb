@@ -1,6 +1,10 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:edit, :update, :destroy, :share]
 
+  def show
+    @song = Song.find(params[:id])
+  end
+
   def index
     @songs = Song.all
   end
