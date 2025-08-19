@@ -1,0 +1,15 @@
+<div class="container mt-4">
+  <h1>Edit Song</h1>
+  <%= form_with model: @song, local: true do |form| %>
+    <div class="mb-3">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :generated_lyrics, "Lyrics" %>
+      <%= form.text_area :generated_lyrics, rows: 5, class: "form-control" %>
+    </div>
+    <%= form.submit "Save", class: "btn btn-primary" %>
+    <%= link_to "Back", songs_path, class: "btn btn-secondary ms-2" %>
+  <% end %>
+</div>
