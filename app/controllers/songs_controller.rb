@@ -1,8 +1,9 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:edit, :update, :destroy, :share]
-  
+
   def show
     @song = Song.find(params[:id])
+  end
 
   def index
     @songs = Song.all
@@ -59,7 +60,9 @@ class SongsController < ApplicationController
         flash.now[:alert] = "Email cannot be blank."
         render :share, status: :unprocessable_entity
       end
-      
+    end
+  end
+
   def new
     @song = Song.new
   end
@@ -85,6 +88,5 @@ class SongsController < ApplicationController
 
   def song_params
     params.require(:song).permit(:mood, :genre, :keywords, :title, :generated_lyrics)
-
   end
 end
