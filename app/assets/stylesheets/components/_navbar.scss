@@ -1,6 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: #010038;       // match your dark background
+  font-family: "Bebas Neue", sans-serif;  // set Bebas Neue
+  font-weight: 400;           // optional, Bebas Neue usually 400
+  letter-spacing: 1px;        // optional, nice display effect
+  color: #EEEEEE;             // text color to match your theme
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +13,9 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+/* Optional: make nav links the same color */
+.navbar-lewagon .nav-link {
+  color: #EEEEEE;
 }
