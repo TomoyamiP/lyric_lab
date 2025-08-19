@@ -72,7 +72,6 @@ class SongsController < ApplicationController
     @song.user = current_user
     prompt = @song.build_prompt
     AiSongGeneratorService.new(prompt, @song).call
-    raise
     if @song.save
       redirect_to song_path(@song)
     else
