@@ -6,7 +6,7 @@ class SongsController < ApplicationController
   end
 
   def edit
-    # @song = Song.find(params[:id])
+    @song = Song.find(params[:id])
   end
 
   def update
@@ -47,13 +47,10 @@ class SongsController < ApplicationController
 
   def share
     if request.get?
-      # 显示表单
     elsif request.post?
       recipient_email = params[:recipient_email]
       note = params[:note]
-
       if recipient_email.present?
-        # TODO: 在这里实现分享逻辑（未来可接 Mailer 发邮件）
         redirect_to songs_path, notice: "Song shared with #{recipient_email}."
       else
         flash.now[:alert] = "Email cannot be blank."
