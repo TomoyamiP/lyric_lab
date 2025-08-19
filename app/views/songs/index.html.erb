@@ -6,14 +6,16 @@
   <% if @songs.any? %>
     <ul class="list-group mb-4" data-controller="share">
       <% @songs.each do |song| %>
-        <li class="list-group-item d-flex align-items-center justify-content-between">
-            <span><%= song.title %></span>
-            <div class="d-flex gap-3">
-              <%= link_to "Edit", edit_song_path(song) %>
-              <%= link_to "Delete", song_path(song), { data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?" }} %>
-              <button data-action="click-> share#share" data-song-id="<%= song.id %>" data-title="<%= song.title %>">Share</button>
-            </div>
-        </li>
+        <%= link_to song_path(song) do %>
+          <li class="list-group-item d-flex align-items-center justify-content-between">
+              <span><%= song.title %></span>
+              <div class="d-flex gap-3">
+                <%= link_to "Edit", edit_song_path(song) %>
+                <%= link_to "Delete", song_path(song), { data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?" }} %>
+                <button data-action="click-> share#share" data-song-id="<%= song.id %>" data-title="<%= song.title %>">Share</button>
+              </div>
+          </li>
+        <% end %>
       <% end %>
     </ul>
 
