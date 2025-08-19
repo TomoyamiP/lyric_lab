@@ -4,27 +4,19 @@
     <%= link_to "Create a Song", new_song_path, class: "btn btn-primary" %>
   </div>
   <% if @songs.any? %>
-    <%= form_with url: bulk_songs_path, method: :post, local: true do %>
-      <ul class="list-group mb-4">
-        <% @songs.each do |song| %>
-          <li class="list-group-item d-flex align-items-center justify-content-between">
+    <ul class="list-group mb-4" data-controller="share">
+      <% @songs.each do |song| %>
+        <li class="list-group-item d-flex align-items-center justify-content-between">
             <span><%= song.title %></span>
-            <div class="form-check m-0">
-              <%= check_box_tag "song_ids[]", song.id, false,
-                                id: "song_#{song.id}",
-                                class: "form-check-input" %>
-              <%= label_tag "song_#{song.id}", "", class: "visually-hidden" %>
+            <div class="d-flex gap-3">
+              <%= link_to "Edit", edit_song_path(song) %>
+              <%= link_to "Delete", song_path(song), { data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?" }} %>
+              <button data-action="click-> share#share" data-song-id="<%= song.id %>" data-title="<%= song.title %>">Share</button>
             </div>
-          </li>
-        <% end %>
-      </ul>
-      <div class="d-flex justify-content-center gap-2">
-        <button type="submit" name="bulk_action" value="edit" class="btn btn-primary">Edit</button>
-        <button type="submit" name="bulk_action" value="share" class="btn btn-primary">Share</button>
-        <button type="submit" name="bulk_action" value="delete" class="btn btn-primary"
-                data-turbo-confirm="Delete selected songs?">Delete</button>
-      </div>
-    <% end %>
+        </li>
+      <% end %>
+    </ul>
+
   <% else %>
     <div class="alert alert-secondary text-center">
       No songs yet.
