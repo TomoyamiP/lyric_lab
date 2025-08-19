@@ -3,7 +3,9 @@
 </h1>
 
 <div class="lyric_box">
-  <%= @song.generated_lyrics %>
+  <% @song.generated_lyrics.split("\n").each do |line| %>
+    <p><%= line %></p>
+  <% end %>
 </div>
 
 <div class="button-container">
