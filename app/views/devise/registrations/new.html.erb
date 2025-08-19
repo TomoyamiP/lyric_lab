@@ -4,13 +4,13 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :username,
+                required: true,
+                autofocus: true%>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
-    <%= f.input :username,
-                required: true,
-                autofocus: true%>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -18,6 +18,20 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :age,
+                required: true,
+                autofocus: true%>
+    <%= f.input :gender,
+                required: true,
+                autofocus: true %>
+    <%= f.input :music_style,
+                as: :select,
+                collection: User::MUSIC_STYLES,
+                include_blank: "Select a style" %>
+    <%= f.input :musician_type,
+                as: :select,
+                collection: User::MUSICIAN_TYPES,
+                include_blank: "Select a type" %>
   </div>
 
   <div class="form-actions">
