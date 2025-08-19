@@ -56,6 +56,21 @@ class SongsController < ApplicationController
         flash.now[:alert] = "Email cannot be blank."
         render :share, status: :unprocessable_entity
       end
+      
+  def new
+    @song = Song.new
+  end
+
+  def create
+    @song = Song.new(song_params)
+    @song.user = current_user
+    prompt = @song.build_prompt
+    AiSongGeneratorService.new(prompt, @song).call
+    raise
+    if @song.save
+      redirect_to song_path(@song)
+    else
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -66,6 +81,6 @@ class SongsController < ApplicationController
   end
 
   def song_params
-    params.require(:song).permit(:title, :generated_lyrics)
+    params.require(:song).permit(:mood, :genre, :keywords, :title, :generated_lyrics)
   end
 end
