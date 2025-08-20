@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  before_action :set_song, only: [:edit, :update, :destroy, :share]
+  before_action :set_song, only: [:edit, :update, :destroy]
 
   def show
     @song = Song.find(params[:id])
@@ -46,20 +46,6 @@ class SongsController < ApplicationController
       redirect_to songs_path, notice: "Selected songs deleted."
     else
       redirect_to songs_path, alert: "Unknown bulk action."
-    end
-  end
-
-  def share
-    if request.get?
-    elsif request.post?
-      recipient_email = params[:recipient_email]
-      note = params[:note]
-      if recipient_email.present?
-        redirect_to songs_path, notice: "Song shared with #{recipient_email}."
-      else
-        flash.now[:alert] = "Email cannot be blank."
-        render :share, status: :unprocessable_entity
-      end
     end
   end
 
