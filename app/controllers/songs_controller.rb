@@ -6,7 +6,14 @@ class SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.all
+    case params[:sort]
+    when "date"
+      @songs = Song.order(created_at: :desc)
+    when "alpha"
+      @songs = Song.order(title: :asc)
+    else
+      @songs = Song.all
+    end
   end
 
   def edit

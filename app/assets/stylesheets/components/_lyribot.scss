@@ -1,11 +1,19 @@
+/* Default LyriBot icon (for other pages if any) */
 .lyribot {
-  width: 50px;               // size of the circle
+  width: 50px;
   height: 50px;
-  border-radius: 50%;        // makes it a perfect circle
+  border-radius: 50%;
   background-image: url("https://res-console.cloudinary.com/dt4jctqz1/thumbnails/v1/image/upload/v1755585958/bHlyaWNfbGFiX2xvZ29fcHFoaG9o/preview");
-  background-size: cover;    // fill the circle completely
-  background-position: center; // center the image
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  cursor: pointer;           // indicates clickable
-  display: inline-block;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto 8px; // centers horizontally, adds spacing below
+}
+
+/* Shrink LyriBot icon only in landing page cards */
+.container .lyribot {
+  width: 32px;
+  height: 32px;
 }

@@ -7,6 +7,32 @@
 }
 
 .btn-flat:hover {
-  background: #4D04C4;
+  background: #3352ff;
+  color: #EEEEEE;
+}
+
+.btn-secondary {
+  color: #EEEEEE;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #78C841;
+  transition: background 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #3352ff;
+  color: #EEEEEE;
+}
+
+.btn-danger {
+  color: #EEEEEE;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #B31312;
+  transition: background 0.3s ease;
+}
+
+.btn-danger:hover {
+  background: #3352ff;
   color: #EEEEEE;
 }

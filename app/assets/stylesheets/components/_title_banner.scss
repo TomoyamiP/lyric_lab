@@ -7,3 +7,28 @@
   font-size: 2rem;
   font-weight: bold;
 }
+
+.title-landing-banner {
+  display: flex;                  // enable flexbox
+  flex-direction: column;         // stack text vertically
+  justify-content: center;        // vertical centering
+  align-items: center;            // horizontal centering
+
+  width: 100%;
+  min-height: 400px;              // larger height
+  background: linear-gradient(
+                rgba(26, 42, 128, 0.7),
+                rgba(26, 42, 128, 0.7)
+              ),
+              url("https://res.cloudinary.com/dt4jctqz1/image/upload/v1755594489/technics-turntable_vrlwpc.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: white;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: 0;                  // touch top of page
+  padding: 0 20px;                // optional horizontal padding for smaller screens
+}
