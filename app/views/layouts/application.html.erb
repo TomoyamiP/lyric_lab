@@ -8,10 +8,45 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
   </head>
   <body>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
+    <%= render "shared/bottom_nav" %>
+    <script>
+      document.addEventListener("click", function (e) {
+
+        const btn = e.target.closest(".js-delete");
+        if (!btn) return;
+
+        e.preventDefault();
+
+        const url = btn.dataset.url;
+        const csrf = document.querySelector('meta[name="csrf-token"]').content;
+
+        const runDelete = () => fetch(url, { method: "DELETE", headers: { "X-CSRF-Token": csrf } })
+                                  .then(() => window.location.reload());
+
+        if (typeof Swal === "undefined") {
+          runDelete();
+          return;
+        }
+
+        Swal.fire({
+          title: "Are you sure?",
+          text: "This will permanently delete the song.",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#d33",
+          cancelButtonColor: "#3085d6",
+          confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+          if (result.isConfirmed) runDelete();
+        });
+      });
+    </script>
     <%= yield %>
   </body>
 </html>
