@@ -15,7 +15,7 @@
   align-items: center;            // horizontal centering
 
   width: 100%;
-  min-height: 400px;              // larger height
+  min-height: 380px;              // larger height
   background: linear-gradient(
                 rgba(26, 42, 128, 0.7),
                 rgba(26, 42, 128, 0.7)
@@ -30,5 +30,5 @@
   font-size: 2.5rem;
   font-weight: bold;
   margin-top: 0;                  // touch top of page
-  padding: 0 20px;                // optional horizontal padding for smaller screens
+  padding: 0 10px;                // optional horizontal padding for smaller screens
 }
