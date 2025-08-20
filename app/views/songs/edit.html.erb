@@ -1,15 +1,19 @@
-<div class="container mt-4">
-  <h1>Edit Song</h1>
-  <%= form_with model: @song, local: true do |form| %>
-    <div class="mb-3">
-      <%= form.label :title %>
-      <%= form.text_field :title, class: "form-control" %>
-    </div>
-    <div class="mb-3">
-      <%= form.label :generated_lyrics, "Lyrics" %>
-      <%= form.text_area :generated_lyrics, rows: 5, class: "form-control" %>
-    </div>
-    <%= form.submit "Save", class: "btn btn-primary" %>
-    <%= link_to "Back", song_path(@song), class: "btn btn-secondary ms-2" %>
-  <% end %>
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="col-md-8 col-lg-6"> <!-- 控制宽度，居中 -->
+    <h1 class="text-center mb-4">Edit Song</h1>
+    <%= form_with model: @song, local: true do |form| %>
+      <div class="mb-3">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :generated_lyrics, "Lyrics" %>
+        <%= form.text_area :generated_lyrics, rows: 12, class: "form-control" %> <!-- rows 改长 -->
+      </div>
+      <div class="d-flex justify-content-between">
+        <%= form.submit "Save", class: "btn btn-flat btn-primary" %>
+        <%= link_to "Back", songs_path, class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </div>
 </div>
