@@ -13,16 +13,21 @@
       <i class="bi bi-plus-circle"></i><br>
       New
     <% end %>
-      <div class="dropup-center dropup">
-        <button class="nav-link text-white text-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa-solid fa-gear"></i><br>
-          Setting
-        </button>
-        <ul class="dropdown-menu bg-light">
-          <li><%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %></li>
-          <li><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to log out?" }, class: "dropdown-item text-danger" %></li>
-        </ul>
-      </div>
+    <div class="dropup-center dropup">
+      <button class="nav-link text-white text-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa-solid fa-gear"></i><br>
+        Setting
+      </button>
+      <ul class="dropdown-menu bg-light">
+        <li><%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %></li>
+        <li>
+          <%= link_to "Log out",
+      destroy_user_session_path,
+      method: :delete,
+      class: "dropdown-item text-danger js-delete",
+      data: { url: destroy_user_session_path } %>
+        </li>
+      </ul>
+    </div>
   <% end %>
-
 </nav>
