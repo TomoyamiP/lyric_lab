@@ -2,6 +2,7 @@
   <div class="col-md-8 col-lg-6">
     <h1 class="song-title text-3xl font-bold text-center mb-4 title-banner"><%= @song.title %></h1>
     <div class="lyric_box _fonts mb-4">
+      <p><em>This is the prompt you entered:</em></p>
       <p><strong>Mood:</strong> <%= @song.mood.presence || "N/A" %></p>
       <p><strong>Genre:</strong> <%= @song.genre.presence || "N/A" %></p>
       <p><strong>Keywords:</strong> <%= @song.keywords.presence || "N/A" %></p>
@@ -19,6 +20,7 @@
         data-title="<%= @song.title %>">
         Share
       </button>
+      <%= link_to "Back", songs_path, class: "btn btn-secondary" %>
       <button class="btn btn-danger js-delete"
               data-url="<%= song_path(@song) %>">
         Delete
