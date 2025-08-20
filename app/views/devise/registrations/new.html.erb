@@ -1,5 +1,13 @@
 <div class="container mt-5 d-flex justify-content-center">
   <div class="col-md-8 col-lg-6">
+    <style>
+      .container .hint,
+      .container .form-text,
+      .container .text-muted {
+        color: #cfd2d6 !important;
+        opacity: 1 !important;
+      }
+    </style>
     <h2 class="text-center mb-4 title-banner">Sign up</h2>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
@@ -14,6 +22,7 @@
           <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                hint_html: { class: "form-text", style: "color:#cfd2d6" },
                 input_html: { autocomplete: "new-password" } %>
         </div>
         <div class="mb-3">
