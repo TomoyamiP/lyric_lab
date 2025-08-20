@@ -6,13 +6,16 @@ class SongsController < ApplicationController
   end
 
   def index
-    case params[:sort]
+  sort_column = params[:sort]
+  sort_direction = params[:direction] == "desc" ? "desc" : "asc"
+
+    case sort_column
     when "date"
-      @songs = Song.order(created_at: :desc)
+      @songs = current_user.songs.order(created_at: sort_direction)
     when "alpha"
-      @songs = Song.order(title: :asc)
+      @songs = current_user.songs.order(title: sort_direction)
     else
-      @songs = Song.all
+      @songs = current_user.songs
     end
   end
 
