@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: -> { redirect_to songs_path, alert: "Song not found." }
   before_action :set_song, only: [:edit, :update, :destroy]
 
   def show
