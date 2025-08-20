@@ -1,8 +1,9 @@
 /* Navbar background */
 .navbar {
   background-color: #010038;   // dark blue
-  padding: 0.5rem 1rem;
+  padding: 0.25rem 1rem;       // smaller vertical padding
   z-index: 1000;
+  height: 70px;                // optional: fixes navbar height
 }
 
 /* Navbar brand (logo + text) */
@@ -14,13 +15,14 @@
   text-decoration: none;
   display: flex;
   align-items: center;        // vertical center
-  gap: 1rem;                  // spacing between logo and text
+  gap: 0.75rem;               // spacing between logo and text
+  line-height: 1;             // prevents extra spacing
 }
 
 /* Logo next to text */
 .logo1 {
-  width: 60px;                // slightly larger logo to match 3rem text
-  height: 60px;
+  width: 50px;                // smaller logo
+  height: 50px;
   background-image: url("https://res.cloudinary.com/dt4jctqz1/image/upload/v1755666806/lyriclab1_xpenv7.jpg");
   background-size: contain;
   background-position: center;
