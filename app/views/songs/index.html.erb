@@ -19,7 +19,7 @@
           </span>
           <div class="d-flex gap-3">
             <%= link_to "Edit", edit_song_path(song), class: "btn btn-flat" %>
-            <button class="btn btn-flat"
+            <button class="btn btn-secondary"
             data-action="click->share#share"
               data-song-id="<%= song.id %>"
               data-title="<%= song.title %>">
