@@ -53,6 +53,9 @@ User.create({
 User.all.each do |user|
   Song.create({
     user: user,
+    mood: "Happy",
+    genre: "Pop",
+    keywords: "Sunshine",
     title: "Sunshine in the Morning",
     generated_lyrics: "
       Verse 1:
@@ -150,6 +153,9 @@ User.all.each do |user|
 
     Song.create({
     user: user,
+    mood: "Sad",
+    genre: "Blues",
+    keywords: "Rain",
     title: "Rain on my Heart",
     generated_lyrics: "
       Verse 1:
@@ -211,6 +217,9 @@ User.all.each do |user|
 
     Song.create({
     user: user,
+    mood: "Love",
+    genre: "Pop",
+    keywords: "Love",
     title: "Echoes of Love",
     generated_lyrics: "
       Verse 1:
@@ -294,6 +303,9 @@ User.all.each do |user|
 
     Song.create({
     user: user,
+    mood: "Angry",
+    genre: "Rock",
+    keywords: "Fire",
     title: "Raging Fire Inside",
     generated_lyrics: "
       Verse 1:

@@ -41,11 +41,21 @@
   border: none;
 }
 
-.navbar .dropdown-item {
-  color: #EEEEEE;
+.bottom-nav {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1030;
 }
 
-.navbar .dropdown-item:hover {
-  background-color: #78C841;
-  color: #010038;
+.bottom-nav .dropdown-menu {
+  inset: auto auto 100% 0 !important;
+  transform: translate3d(0,0,0) !important;
+  margin-bottom: .5rem;
+}
+
+.bottom-nav .dropdown-toggle::after { display: none; }
+
+.bottom-nav .nav-link {
+  min-width: 72px;
+  text-align: center;
 }
