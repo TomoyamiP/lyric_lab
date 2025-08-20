@@ -12,16 +12,3 @@
 @import "components/global";
 @import "components/index";
 @import "pages/index";
-.navbar.fixed-bottom {
-  height: 55px;   /* 调整高度，默认大约 70px */
-  padding: 0;     /* 去掉上下内边距 */
-}
-
-.navbar.fixed-bottom .nav-link {
-  font-size: 0.8rem;   /* 调整文字大小 */
-  padding: 2px 0;      /* 压缩上下间距 */
-}
-
-.navbar.fixed-bottom i {
-  font-size: 1.2rem;   /* 图标稍微小一点 */
-}

@@ -14,9 +14,10 @@
         data-title="<%= @song.title %>">
         Share
       </button>
-      <%= link_to "Delete", song_path(@song),
-            data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?" },
-            class: "btn btn-danger" %>
+      <button class="btn btn-danger js-delete"
+        data-url="<%= song_path(@song) %>">
+        Delete
+      </button>
     </div>
   </div>
 </div>
