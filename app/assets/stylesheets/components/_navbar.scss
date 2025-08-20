@@ -1,21 +1,49 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: #010038;       // match your dark background
-  font-family: "Bebas Neue", sans-serif;  // set Bebas Neue
-  font-weight: 400;           // optional, Bebas Neue usually 400
-  letter-spacing: 1px;        // optional, nice display effect
-  color: #EEEEEE;             // text color to match your theme
+/* Navbar background */
+.navbar {
+  background-color: #010038;   // dark blue
+  padding: 0.5rem 1rem;
+  z-index: 1000;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
-
-/* Optional: make nav links the same color */
-.navbar-lewagon .nav-link {
+/* Navbar brand (logo + text) */
+.navbar .navbar-brand {
   color: #EEEEEE;
+  font-weight: bold;
+  font-size: 2rem;
+  font-family: "Bebas Neue", sans-serif;
+  text-decoration: none;
+  display: flex;
+  align-items: center;        // vertical center
+  gap: 1rem;                  // spacing between logo and text
+}
+
+/* Logo next to text */
+.logo1 {
+  width: 60px;                // slightly larger logo to match 3rem text
+  height: 60px;
+  background-image: url("https://res.cloudinary.com/dt4jctqz1/image/upload/v1755666806/lyriclab1_xpenv7.jpg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+
+/* Navbar links and dropdown */
+.navbar .nav-link {
+  padding: 0;
+}
+
+.navbar .dropdown-menu {
+  background-color: #010038;   // match navbar
+  border: none;
+}
+
+.navbar .dropdown-item {
+  color: #EEEEEE;
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #78C841;
+  color: #010038;
 }
