@@ -6,9 +6,14 @@
   <% end %>
 </div>
 
-<div class="song-actions">
+<div class="song-actions d-flex gap-2 mt-4" data-controller="share">
   <%= link_to "Edit", edit_song_path(@song), class: "btn btn-flat" %>
-  <%= link_to "Share", share_song_path(@song), class: "btn btn-secondary" %>
+  <button class="btn btn-secondary"
+          data-action="click->share#share"
+    data-song-id="<%= @song.id %>"
+    data-title="<%= @song.title %>">
+    Share
+  </button>
   <%= link_to "Delete", song_path(@song),
         data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
         class: "btn btn-danger" %>
