@@ -1,17 +1,16 @@
 .landing-hero {
-  background: linear-gradient(to right, #010038, #1A2A80);
+  min-height: 80vh; // fills most of the screen height
+  display: flex;
+  flex-direction: column;
+  justify-content: center; // center vertically
+  align-items: center; // center horizontally
+  text-align: center;
+  padding: 2rem;
+
+  background: linear-gradient(
+              to right,
+              #010038,
+              #1A2A80
+            );
   color: #EEEEEE;
-}
-
-.card {
-  border: none;
-  border-radius: 12px;
-}
-
-.landing-example {
-  background: #1A2A80;
-}
-
-.title-banner {
-  font-family: "Bebas Neue", sans-serif;
 }
