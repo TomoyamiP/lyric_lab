@@ -4,8 +4,8 @@
     <div class="text-center mb-3">
       <%= link_to "Create a Song", new_song_path, class: "btn btn-flat" %>
       <div class="d-flex justify-content-center mt-3 mb-3 gap-2">
-        <%= link_to "Sort by Date", songs_path(sort: "date"), class: "btn btn-outline-light" %>
-        <%= link_to "Sort Alphabetically", songs_path(sort: "alpha"), class: "btn btn-outline-light" %>
+        <%= link_to "Sort by Date", songs_path(sort: "date", direction: params[:direction] == "asc" ? "desc" : "asc"), class: "btn btn-outline-light" %>
+        <%= link_to "Sort Alphabetically", songs_path(sort: "alpha", direction: params[:direction] == "asc" ? "desc" : "asc"), class: "btn btn-outline-light" %>
       </div>
     </div>
     <% if @songs.any? %>
