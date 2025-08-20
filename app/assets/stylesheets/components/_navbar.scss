@@ -3,7 +3,8 @@
   background-color: #010038;   // dark blue
   padding: 0.25rem 1rem;       // smaller vertical padding
   z-index: 1000;
-  height: 70px;                // optional: fixes navbar height
+  height: 60px;
+  display: flex;          // optional: fixes navbar height
 }
 
 /* Navbar brand (logo + text) */
