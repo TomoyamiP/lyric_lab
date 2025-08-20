@@ -9,4 +9,11 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :music_style, :musician_type, :age, :gender])
   end
+
+  private
+
+  def after_sign_in_path_for(resource)
+    songs_path
+  end
+
 end
