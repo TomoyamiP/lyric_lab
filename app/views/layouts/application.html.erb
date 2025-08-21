@@ -10,6 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <%= render "shared/meta", song: @song if controller_name == "songs" && action_name == "show" && @song.present? %>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#010038">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="/icons/icon-192.png">
   </head>
   <body>
     <%= render "shared/navbar" %>
