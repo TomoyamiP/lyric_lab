@@ -20,6 +20,30 @@
           </div>
         <% end %>
       </div>
+      <div class="mb-3">
+        <%= form.label :generated_lyrics, "Lyrics" %>
+        <%= form.text_area :generated_lyrics, rows: 12, class: "form-control" %>
+      </div>
+      <div class="d-flex justify-content-between icon-button-wrapper">
+        <%= form.submit "Save", class: "icon-button icon-button-save" %>
+        <%= link_to "Back", song_path(@song), class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  <ul class="chat">
+  <% @song.messages.each do |message| %>
+    <% unless message.role == 'system' %>
+      <li class="chat-bubble <%= message.role %>">
+        <%= message.content %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<%= simple_form_for([@song, @message]) do |f| %>
+    <%= f.input :content %>
+    <%= f.submit %>
+<% end %>
     </div>
   </div>
 </div>
