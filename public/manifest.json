@@ -1,0 +1,12 @@
+{
+  "name": "LyricLab",
+  "short_name": "LyricLab",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#010038",
+  "theme_color": "#010038",
+  "icons": [
+    { "src": "https://res.cloudinary.com/dt4jctqz1/image/upload/v1755666806/lyriclab1_xpenv7.jpg", "sizes": "192x192", "type": "image/png" },
+    { "src": "https://res.cloudinary.com/dt4jctqz1/image/upload/v1755666806/lyriclab1_xpenv7.jpg", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -1,33 +1,35 @@
-<nav class="navbar fixed-bottom navbar-dark bg-dark d-flex justify-content-around">
-  <% unless user_signed_in? %>
-    <%= link_to new_user_session_path, class: "nav-link text-white text-center" do %>
-      <i class="bi bi-person"></i><br>
-      Login
+<% unless controller_name == "pages" && action_name == "home" %>
+  <nav class="navbar fixed-bottom navbar-dark bg-dark d-flex justify-content-around">
+    <% unless user_signed_in? %>
+      <%= link_to new_user_session_path, class: "nav-link text-white text-center" do %>
+        <i class="bi bi-person"></i><br>
+        Login
+      <% end %>
+    <% else %>
+      <%= link_to songs_path, class: "nav-link text-white text-center" do %>
+        <i class="bi bi-house"></i><br>
+        Home
+      <% end %>
+      <%= link_to new_song_path, class: "nav-link text-white text-center" do %>
+        <i class="bi bi-plus-circle"></i><br>
+        New
+      <% end %>
+      <div class="dropup-center dropup">
+        <button class="nav-link text-white text-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-gear"></i><br>
+          Settings
+        </button>
+        <ul class="dropdown-menu bg-light">
+          <li><%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %></li>
+          <li>
+            <%= link_to "Log out",
+                destroy_user_session_path,
+                method: :delete,
+                class: "dropdown-item text-danger js-delete",
+                data: { url: destroy_user_session_path } %>
+          </li>
+        </ul>
+      </div>
     <% end %>
-  <% else %>
-    <%= link_to songs_path, class: "nav-link text-white text-center" do %>
-      <i class="bi bi-house"></i><br>
-      Home
-    <% end %>
-    <%= link_to new_song_path, class: "nav-link text-white text-center" do %>
-      <i class="bi bi-plus-circle"></i><br>
-      New
-    <% end %>
-    <div class="dropup-center dropup">
-      <button class="nav-link text-white text-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="fa-solid fa-gear"></i><br>
-        Setting
-      </button>
-      <ul class="dropdown-menu bg-light">
-        <li><%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %></li>
-        <li>
-          <%= link_to "Log out",
-      destroy_user_session_path,
-      method: :delete,
-      class: "dropdown-item text-danger js-delete",
-      data: { url: destroy_user_session_path } %>
-        </li>
-      </ul>
-    </div>
-  <% end %>
-</nav>
+  </nav>
+<% end %>

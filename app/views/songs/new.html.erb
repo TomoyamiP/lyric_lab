@@ -1,43 +1,67 @@
-<div class="container mt-5 d-flex justify-content-center">
-  <div class="col-md-8 col-lg-6">
-    <h1 class="text-center mb-4 title-banner"><strong>AI Song Generator</strong></h1>
-    <%= simple_form_for @song do |f| %>
-      <div class="form-group mb-3">
-        <%= f.label :mood, "Mood" %>
-        <%= f.input :mood,
-              as: :text,
-              label: false,
-              input_html: {
-                placeholder: "What mood should the song express?",
-                rows: 3,
-                class: "form-control"
-              } %>
+<div class="neo-hero">
+  <div class="grain"></div>
+  <div class="grid"></div>
+
+  <div class="container mt-5 d-flex justify-content-center pt-4 pb-5">
+    <div class="col-md-8 col-lg-6">
+      <h1 class="text-center mb-4 title-banner"><strong>AI Song Generator</strong></h1>
+
+      <div class="glass p-4 rounded">
+        <%= simple_form_for @song do |f| %>
+          <!-- Photo upload -->
+          <div class="form-group mb-4">
+            <%= f.label :photo, "Upload a photo", class: "form-label fw-bold" %>
+            <%= f.input :photo,
+                  as: :file,
+                  label: false,
+                  input_html: { class: "form-control" } %>
+          </div>
+
+          <!-- Mood input -->
+          <div class="form-group mb-3">
+            <%= f.label :mood, "Mood", class: "form-label fw-bold" %>
+            <%= f.input :mood,
+                  as: :text,
+                  label: false,
+                  input_html: {
+                    placeholder: "What mood should the song express?",
+                    rows: 3,
+                    class: "form-control"
+                  } %>
+          </div>
+
+          <!-- Genre input -->
+          <div class="form-group mb-3">
+            <%= f.label :genre, "Genre", class: "form-label fw-bold" %>
+            <%= f.input :genre,
+                  as: :text,
+                  label: false,
+                  input_html: {
+                    placeholder: "What genre should the song be?",
+                    rows: 3,
+                    class: "form-control"
+                  } %>
+          </div>
+
+          <!-- Keywords input -->
+          <div class="form-group mb-4">
+            <%= f.label :keywords, "Keywords", class: "form-label fw-bold" %>
+            <%= f.input :keywords,
+                  as: :text,
+                  label: false,
+                  input_html: {
+                    placeholder: "Add your keywords here",
+                    rows: 3,
+                    class: "form-control"
+                  } %>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-actions">
+            <%= f.button :submit, "Create", class: "btn btn-flat w-100" %>
+          </div>
+        <% end %>
       </div>
-      <div class="form-group mb-3">
-        <%= f.label :genre, "Genre" %>
-        <%= f.input :genre,
-              as: :text,
-              label: false,
-              input_html: {
-                placeholder: "What genre should the song be?",
-                rows: 3,
-                class: "form-control"
-              } %>
-      </div>
-      <div class="form-group mb-4">
-        <%= f.label :keywords, "Keywords" %>
-        <%= f.input :keywords,
-              as: :text,
-              label: false,
-              input_html: {
-                placeholder: "Add your keywords here",
-                rows: 3,
-                class: "form-control"
-              } %>
-      </div>
-      <div class="form-actions">
-        <%= f.button :submit, "Create", class: "btn btn-flat w-100" %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
