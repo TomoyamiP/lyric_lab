@@ -1,6 +1,7 @@
 class Song < ApplicationRecord
   belongs_to :user
   has_many :messages, dependent: :destroy
+  has_one_attached :photo
 
   def build_prompt
     prompt = <<~PROMPT
