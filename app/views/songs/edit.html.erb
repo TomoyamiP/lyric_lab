@@ -20,21 +20,27 @@
           </div>
         <% end %>
       </div>
-  <ul class="chat">
-  <% @song.messages.each do |message| %>
-    <% unless message.role == 'system' %>
-      <li class="chat-bubble <%= message.role %>">
-        <%= message.content %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
 
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#lyriBot">
+        Launch LyriBot
+      </button>
 
-<%= simple_form_for([@song, @message]) do |f| %>
-    <%= f.input :content %>
-    <%= f.submit %>
-<% end %>
+      <div class="modal fade" id="lyriBot" tabindex="-1" aria-labelledby="lyriBotLabel"  aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="lyriBotLabel">LyriBot</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= render "messages/messages", messages: @messages %>
+            </div>
+            <div class="modal-footer align-items-stretch">
+              <%= render "messages/form", song: @song, message: @message %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
