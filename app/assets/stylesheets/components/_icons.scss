@@ -1,20 +1,22 @@
 .icon-button-wrapper {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px; /* space between button and label */
+  gap: 6px;
   text-align: center;
 
   .icon-button {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     background-color: #3F3636;
     color: #EEEEEE;
     text-decoration: none;
+    border: none;
+    cursor: pointer;
     transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 
     &:hover {
@@ -22,37 +24,28 @@
     }
 
     i {
-      font-size: 20px;
+      font-size: 28px;
+      line-height: 1;
     }
   }
 
   .label {
-    font-size: 0.8rem;
-    color: #EEEEEE; /* adjust to theme */
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #EEEEEE;
+    text-align: center;
   }
 }
 
 /* Variants */
-.icon-button-share {
-  &:hover {
-    background-color: #78C841; // Twitter blue
-  }
-}
+.icon-button-edit:hover   { background-color: #6C6969; }
+.icon-button-share:hover  { background-color: #78C841; }
+.icon-button-back:hover   { background-color: #1A2A80; }
+.icon-button-delete:hover { background-color: #CB0404; }
 
-.icon-button-delete {
-  &:hover {
-    background-color: #CB0404; // Red
-  }
-}
 
-.icon-button-edit {
+.icon-button-save {
   &:hover {
-    background-color: #6C6969; // Amber/Orange
-  }
-}
-
-.icon-button-back {
-  &:hover {
-    background-color: #1A2A80; // Red
+    background-color: #78C841;
   }
 }

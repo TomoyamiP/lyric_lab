@@ -3,45 +3,73 @@
   <div class="grid"></div>
   <div class="container mt-4 d-flex justify-content-center pt-4 pb-5">
     <div class="col-md-8 col-lg-6" style="margin-top: 72px">
+      <!-- Song Title -->
       <h1 class="title-banner text-center mb-4"><%= @song.title %></h1>
-
-      <div class="glass p-4 mb-4 text-center">
-        <h2 class="mb-3" style="font-size:1.25rem; font-weight:600;">
-          LyriBot has generated this song based on:
-        </h2>
-        <p class="mb-1"><strong>Mood:</strong> <%= @song.mood.presence || "N/A" %></p>
-        <p class="mb-1"><strong>Genre:</strong> <%= @song.genre.presence || "N/A" %></p>
-        <p class="mb-0"><strong>Keywords:</strong> <%= @song.keywords.presence || "N/A" %></p>
+      <!-- Song Metadata -->
+      <div class="d-flex justify-content-center">
+        <div class="glass p-4 mb-4 text-center w-100">
+          <h2 class="mb-3" style="font-size:1.25rem; font-weight:600;">
+            LyriBot has generated this song based on:
+          </h2>
+          <p class="mb-1"><strong>Mood:</strong> <%= @song.mood.presence || "N/A" %></p>
+          <p class="mb-1"><strong>Genre:</strong> <%= @song.genre.presence || "N/A" %></p>
+          <p class="mb-0"><strong>Keywords:</strong> <%= @song.keywords.presence || "N/A" %></p>
+        </div>
       </div>
-
+      <!-- Uploaded Photo -->
       <% if @song.photo.attached? %>
-        <div class="glass p-4 mb-4 text-center">
-          <strong>Uploaded Image:</strong><br>
-          <%= image_tag @song.photo, class: "img-fluid rounded shadow mt-2", alt: "Song Image" %>
+        <div class="d-flex justify-content-center">
+          <div class="glass p-4 mb-4 text-center w-100">
+            <strong>Uploaded Image:</strong><br>
+            <%= image_tag @song.photo, class: "img-fluid rounded shadow mt-2", alt: "Song Image" %>
+          </div>
         </div>
       <% end %>
-
-      <div class="glass p-4 mb-4">
-        <% @song.generated_lyrics.to_s.split("\n").each do |line| %>
-          <p class="mb-2"><%= line %></p>
-        <% end %>
-      </div>
-
+      <!-- Icon Buttons: Edit, Share, Back, Delete -->
       <% if @song.user == current_user %>
-        <div class="glass p-3 d-flex gap-2 justify-content-center" data-controller="share">
-          <%= link_to "Edit", edit_song_path(@song), class: "btn btn-flat" %>
-          <button class="btn btn-secondary"
-                  data-action="click->share#share"
-                  data-song-id="<%= @song.id %>"
-                  data-title="<%= @song.title %>">
-            Share
-          </button>
-          <%= link_to "Back", songs_path, class: "btn btn-secondary" %>
-          <button class="btn btn-danger js-delete" data-url="<%= song_path(@song) %>">
-            Delete
-          </button>
+        <div class="d-flex justify-content-center mt-4 w-100" style="gap: 4rem;">
+          <!-- Edit -->
+          <div class="icon-button-wrapper">
+            <%= link_to edit_song_path(@song), class: "icon-button icon-button-edit" do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+            <div class="label">Edit</div>
+          </div>
+          <!-- Share -->
+          <div class="icon-button-wrapper">
+            <button class="icon-button icon-button-share"
+                    data-action="click->share#share"
+              data-song-id="<%= @song.id %>"
+              data-title="<%= @song.title %>">
+              <i class="fa-regular fa-paper-plane"></i>
+            </button>
+            <div class="label">Share</div>
+          </div>
+          <!-- Back -->
+          <div class="icon-button-wrapper">
+            <%= link_to songs_path, class: "icon-button icon-button-back" do %>
+              <i class="fa-solid fa-rotate-left"></i>
+            <% end %>
+            <div class="label">Back</div>
+          </div>
+          <!-- Delete -->
+          <div class="icon-button-wrapper">
+            <button class="icon-button icon-button-delete js-delete"
+                    data-url="<%= song_path(@song) %>">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+            <div class="label">Delete</div>
+          </div>
         </div>
       <% end %>
+      <!-- Generated Lyrics -->
+      <div class="d-flex justify-content-center">
+        <div class="glass p-4 mb-4 w-100">
+          <% @song.generated_lyrics.to_s.split("\n").each do |line| %>
+            <p class="mb-2"><%= line %></p>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
