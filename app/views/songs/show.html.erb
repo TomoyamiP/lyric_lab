@@ -1,42 +1,47 @@
-<div class="container mt-5 d-flex justify-content-center">
-  <div class="col-md-8 col-lg-6" style="margin-top: 72px">
-    <h1 class="song-title text-3xl font-bold text-center mb-4 title-banner"><%= @song.title %></h1>
-    <div class="lyric_box _fonts mb-4 text-center">
-      <h2 class="mb-4 text-center text-sm font-semibold whitespace-nowrap" style="font-size:1.9rem;">
-        LyriBot has generated this song based on:
-      </h2>
-      <p><strong>Mood:</strong> <%= @song.mood.presence || "N/A" %></p>
-      <p><strong>Genre:</strong> <%= @song.genre.presence || "N/A" %></p>
-      <p><strong>Keywords:</strong> <%= @song.keywords.presence || "N/A" %></p>
-    </div>
-    <%# Inline image display if photo is attached %>
-    <% if @song.photo.attached? %>
-      <div class="mb-4 text-center">
-        <strong>Uploaded Image:</strong><br>
-        <%= image_tag @song.photo, class: "img-fluid rounded shadow", alt: "Song Image" %>
+<div class="neo-hero">
+  <div class="grain"></div>
+  <div class="grid"></div>
+  <div class="container mt-4 d-flex justify-content-center pt-4 pb-5">
+    <div class="col-md-8 col-lg-6" style="margin-top: 72px">
+      <h1 class="title-banner text-center mb-4"><%= @song.title %></h1>
+
+      <div class="glass p-4 mb-4 text-center">
+        <h2 class="mb-3" style="font-size:1.25rem; font-weight:600;">
+          LyriBot has generated this song based on:
+        </h2>
+        <p class="mb-1"><strong>Mood:</strong> <%= @song.mood.presence || "N/A" %></p>
+        <p class="mb-1"><strong>Genre:</strong> <%= @song.genre.presence || "N/A" %></p>
+        <p class="mb-0"><strong>Keywords:</strong> <%= @song.keywords.presence || "N/A" %></p>
       </div>
-    <% end %>
-    <%# Safe handling of generated_lyrics %>
-    <div class="lyric_box _fonts mb-4">
-      <% (@song.generated_lyrics || "").split("\n").each do |line| %>
-        <p><%= line %></p>
+
+      <% if @song.photo.attached? %>
+        <div class="glass p-4 mb-4 text-center">
+          <strong>Uploaded Image:</strong><br>
+          <%= image_tag @song.photo, class: "img-fluid rounded shadow mt-2", alt: "Song Image" %>
+        </div>
+      <% end %>
+
+      <div class="glass p-4 mb-4">
+        <% @song.generated_lyrics.to_s.split("\n").each do |line| %>
+          <p class="mb-2"><%= line %></p>
+        <% end %>
+      </div>
+
+      <% if @song.user == current_user %>
+        <div class="glass p-3 d-flex gap-2 justify-content-center" data-controller="share">
+          <%= link_to "Edit", edit_song_path(@song), class: "btn btn-flat" %>
+          <button class="btn btn-secondary"
+                  data-action="click->share#share"
+                  data-song-id="<%= @song.id %>"
+                  data-title="<%= @song.title %>">
+            Share
+          </button>
+          <%= link_to "Back", songs_path, class: "btn btn-secondary" %>
+          <button class="btn btn-danger js-delete" data-url="<%= song_path(@song) %>">
+            Delete
+          </button>
+        </div>
       <% end %>
     </div>
-    <% if @song.user == current_user %>
-      <div class="song-actions d-flex gap-2 justify-content-center" data-controller="share">
-        <%= link_to "Edit", edit_song_path(@song), class: "btn btn-flat" %>
-        <button class="btn btn-secondary"
-                data-action="click->share#share"
-          data-song-id="<%= @song.id %>"
-          data-title="<%= @song.title %>">
-          Share
-        </button>
-        <%= link_to "Back", songs_path, class: "btn btn-secondary" %>
-        <button class="btn btn-danger js-delete"
-                data-url="<%= song_path(@song) %>">
-          Delete
-        </button>
-      </div>
-    <% end %>
   </div>
 </div>
