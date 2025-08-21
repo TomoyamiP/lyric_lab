@@ -1,0 +1,14 @@
+<% title = song.title %>
+<% username = song.user.username %>
+<% image_url = 'https://res.cloudinary.com/dt4jctqz1/image/upload/v1755666806/lyriclab1_xpenv7.jpg' %>
+<!-- Open Graph -->
+<meta property="og:title" content="🎶 <%= title %> written by <%= username %>" />
+<meta property="og:description" content="Listen to lyrics created on LyricLab." />
+<meta property="og:image" content="<%= image_url %>" />
+<meta property="og:url" content="<%= request.original_url %>" />
+<meta property="og:type" content="music.song" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="🎶 <%= title %> written by <%= username %>" />
+<meta name="twitter:description" content="Listen to lyrics created on LyricLab." />
+<meta name="twitter:image" content="<%= image_url %>" />
