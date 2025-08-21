@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :songs, dependent: :destroy
+  has_many :messages, through: :songs
 
   MUSIC_STYLES = ["Pop", "Rock", "Country", "Blues", "Hip-Hop", "Jazz", "World", "Alternative", "R&B", "Folk", "Reggae", "Gospel", "Metal", "Punk"]
   MUSICIAN_TYPES = ["Beginner", "Hobbyist", "Semi-Pro", "Professional", "Virtuoso"]

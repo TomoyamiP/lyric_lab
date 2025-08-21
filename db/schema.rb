@@ -48,7 +48,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_21_031243) do
     t.bigint "song_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "model_id"
+    t.integer "input_tokens"
+    t.integer "output_tokens"
+    t.bigint "tool_call_id"
     t.index ["song_id"], name: "index_messages_on_song_id"
+    t.index ["tool_call_id"], name: "index_messages_on_tool_call_id"
   end
 
   create_table "songs", force: :cascade do |t|
@@ -61,6 +66,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_21_031243) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_songs_on_user_id"
+  end
+
+  create_table "tool_calls", force: :cascade do |t|
+    t.bigint "message_id", null: false
+    t.string "tool_call_id"
+    t.string "name"
+    t.jsonb "arguments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_tool_calls_on_message_id"
+    t.index ["tool_call_id"], name: "index_tool_calls_on_tool_call_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -83,5 +99,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_21_031243) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "messages", "songs"
+  add_foreign_key "messages", "tool_calls"
   add_foreign_key "songs", "users"
+  add_foreign_key "tool_calls", "messages"
 end

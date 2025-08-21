@@ -11,9 +11,10 @@
 @import "components/navbar";
 @import "components/global";
 @import "components/index";
+@import "components/chat_bubbles";
 @import "pages/index";
 
 .content-page {
-  margin-top: 70px;
-  margin-bottom: 30px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
