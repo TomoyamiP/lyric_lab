@@ -23,6 +23,8 @@ class SongsController < ApplicationController
 
   def edit
     @song = Song.find(params[:id])
+    @messages = @song.messages
+    @message = Message.new
   end
 
   def update
@@ -38,27 +40,6 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
     @song.destroy
     redirect_to songs_path, status: :see_other, notice: "Song deleted successfully."
-  end
-
-  def bulk
-    song_ids = Array(params[:song_ids]).reject(&:blank?)
-
-    if song_ids.empty?
-      redirect_to songs_path, alert: "Please select at least one song."
-      return
-    end
-
-    case params[:bulk_action]
-    when "edit"
-      redirect_to edit_song_path(song_ids.first)
-    when "share"
-      redirect_to share_song_path(song_ids.first)
-    when "delete"
-      Song.where(id: song_ids).destroy_all
-      redirect_to songs_path, notice: "Selected songs deleted."
-    else
-      redirect_to songs_path, alert: "Unknown bulk action."
-    end
   end
 
   def new
