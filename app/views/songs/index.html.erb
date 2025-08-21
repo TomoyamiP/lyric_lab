@@ -1,44 +1,47 @@
-<div class="container mt-4 d-flex justify-content-center">
-  <div class="col-md-8 col-lg-6">
-    <h1 class="text-center mb-4 title-banner">Songs</h1>
-    <div class="text-center mb-3">
-      <div class="d-flex justify-content-center mt-3 mb-3 gap-2">
-        <%= link_to "Sort by Date", songs_path(sort: "date", direction: params[:direction] == "asc" ? "desc" : "asc"), class: "btn btn-outline-light" %>
-        <%= link_to "Sort Alphabetically", songs_path(sort: "alpha", direction: params[:direction] == "asc" ? "desc" : "asc"), class: "btn btn-outline-light" %>
+<div class="neo-hero">
+  <div class="grain"></div>
+  <div class="grid"></div>
+  <div class="container mt-4 d-flex justify-content-center pt-4 pb-5">
+    <div class="col-md-8 col-lg-6" style="margin-top: 72px">
+      <h1 class="title-banner text-center mb-4">Songs</h1>
+      <div class="text-center mb-3">
+        <div class="btn-group mt-3 mb-3 w-100">
+          <%= link_to "Sort by Date",
+                songs_path(sort: "date", direction: params[:direction] == "asc" ? "desc" : "asc"),
+                class: "btn btn-outline-light" %>
+          <%= link_to "Sort Alphabetically",
+                songs_path(sort: "alpha", direction: params[:direction] == "asc" ? "desc" : "asc"),
+                class: "btn btn-outline-light" %>
+        </div>
       </div>
+      <% if @songs.any? %>
+        <ul class="list-group mb-4" data-controller="share" style="gap:12px">
+          <% @songs.each do |song| %>
+            <li class="list-group-item glass d-flex align-items-center justify-content-between p-3">
+              <span>
+                <%= link_to song.title, song_path(song), class: "text-decoration-none", style: "color:#f1eefc" %>
+                <small class="ms-2" style="color:#c9c3ffb3;"><%= song.created_at.strftime("%b %d, %Y") %></small>
+              </span>
+              <div class="d-flex gap-2">
+                <%= link_to edit_song_path(song), class: "btn btn-flat" do %>
+                  <i class="fa-solid fa-pen-to-square"></i>
+                <% end %>
+                <button class="btn btn-danger js-delete" data-url="<%= song_path(song) %>">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+                <button class="btn btn-secondary"
+                        data-action="click->share#share"
+                  data-song-id="<%= song.id %>"
+                  data-title="<%= song.title %>">
+                  <i class="fa-solid fa-share"></i>
+                </button>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <div class="alert text-center glass p-3" style="border:none;">No songs yet.</div>
+      <% end %>
     </div>
-    <% if @songs.any? %>
-      <ul class="list-group mb-4" data-controller="share">
-        <% @songs.each do |song| %>
-          <li class="list-group-item bg-dark text-white d-flex align-items-center justify-content-between">
-            <span>
-              <%= link_to song.title, song_path(song), class: "link-light text-decoration-none" %>
-              <small class="ms-2" style="color: #bbb;">
-                <%= song.created_at.strftime("%b %d, %Y") %>
-              </small>
-            </span>
-            <div class="d-flex gap-3">
-              <%= link_to edit_song_path(song), class: "btn btn-flat" do %>
-                <i class="fa-solid fa-pen-to-square"></i>
-              <% end %>
-              <button class="btn btn-danger js-delete"
-        data-url="<%= song_path(song) %>">
-                <i class="fa-solid fa-trash"></i>
-              </button>
-              <button class="btn btn-secondary"
-                data-action="click->share#share"
-                data-song-id="<%= song.id %>"
-                data-title="<%= song.title %>">
-                <i class="fa-solid fa-share"></i>
-              </button>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-    <% else %>
-      <div class="alert alert-secondary text-center">
-        No songs yet.
-      </div>
-    <% end %>
   </div>
 </div>
