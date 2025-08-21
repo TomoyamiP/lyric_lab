@@ -14,19 +14,21 @@
         <p><%= line %></p>
       <% end %>
     </div>
-    <div class="song-actions d-flex gap-2 justify-content-center" data-controller="share">
-      <%= link_to "Edit", edit_song_path(@song), class: "btn btn-flat" %>
-      <button class="btn btn-secondary"
-              data-action="click->share#share"
-        data-song-id="<%= @song.id %>"
-        data-title="<%= @song.title %>">
-        Share
-      </button>
-      <%= link_to "Back", songs_path, class: "btn btn-secondary" %>
-      <button class="btn btn-danger js-delete"
-              data-url="<%= song_path(@song) %>">
-        Delete
-      </button>
-    </div>
+    <% if @song.user == current_user %>
+      <div class="song-actions d-flex gap-2 justify-content-center" data-controller="share">
+        <%= link_to "Edit", edit_song_path(@song), class: "btn btn-flat" %>
+        <button class="btn btn-secondary"
+                data-action="click->share#share"
+          data-song-id="<%= @song.id %>"
+          data-title="<%= @song.title %>">
+          Share
+        </button>
+        <%= link_to "Back", songs_path, class: "btn btn-secondary" %>
+        <button class="btn btn-danger js-delete"
+                data-url="<%= song_path(@song) %>">
+          Delete
+        </button>
+      </div>
+    <% end %>
   </div>
 </div>
