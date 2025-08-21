@@ -30,3 +30,59 @@
   clear: both;
   max-width: 800px;
 }
+
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 10px 30px rgba(32, 14, 75, .45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #f1eefc;
+}
+
+.glass--active {
+  background: linear-gradient(180deg, rgba(160,110,255,.45), rgba(120,70,255,.25));
+  border-color: rgba(190,150,255,.6);
+  box-shadow:
+    0 0 0 1px rgba(190,150,255,.35),
+    0 12px 40px rgba(120, 70, 255, .65),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+.song-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.song-card {
+  border-radius: 16px;
+  min-height: 112px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "title   actions"
+    "meta    actions";
+  column-gap: 16px;
+  row-gap: 6px;
+  align-items: center;
+}
+
+.song-card__title { grid-area: title; margin: 0; font-size: 1.2rem; font-weight: 600; line-height: 1.3; }
+.song-meta        { grid-area: meta;  color: #c9c3ffb3; font-size: 0.95rem; }
+
+.song-actions {
+  grid-area: actions;
+  align-self: center;
+}
+
+.song-card__title a {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

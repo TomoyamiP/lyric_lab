@@ -1,0 +1,71 @@
+
+.neo-hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(1200px 700px at 20% -10%, #2b1460 0%, #120a2a 45%, #080515 80%, #05030c 100%);
+  color: #eee;
+
+  &::before {
+    content: "";
+    position: absolute; inset: -20% -10% auto -10%;
+    height: 70vh; width: 70vw;
+    background: radial-gradient(closest-side, rgba(140, 74, 255, .55), rgba(140, 74, 255, .14) 55%, transparent 70%);
+    filter: blur(6px);
+    transform: translate(20%, -10%);
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute; inset: -10% -10% -10% -10%;
+    background:
+      radial-gradient(60% 50% at 5% 85%, rgba(60, 120, 255, .28), rgba(60, 120, 255, .0) 60%),
+      linear-gradient(135deg, rgba(0,0,0,.0) 30%, rgba(0,0,0,.35) 75%);
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+}
+
+.neo-hero .grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'>\
+<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='linear' slope='0.035'/></feComponentTransfer></filter>\
+<rect width='100%' height='100%' filter='url(%23n)'/>\
+</svg>");
+  opacity: .35;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.neo-hero .grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: .06;
+  mask-image: radial-gradient(80% 80% at 50% 40%, black 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.neo-hero .list-group { display: grid; grid-template-columns: 1fr; gap: 12px; }
+
+.neo-hero .list-group-item { border: 1px solid rgba(255,255,255,.12); background: transparent; }
+
+.panel-dark {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  padding: 20px 22px;
+  color: #EEE;
+}
+
+.neo-hero .lyric_box {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0;
+}
