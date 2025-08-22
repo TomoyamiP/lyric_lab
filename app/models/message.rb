@@ -4,10 +4,7 @@ class Message < ApplicationRecord
 
   belongs_to :song
   validates :role, presence: true
-
-  def chat
-    self.song
-  end
+  alias_method :chat, :song
 
   def clean_system_messages
     self.song.messages.where(role: "system").sort_by(&:created_at)[0..-2].each(&:destroy)

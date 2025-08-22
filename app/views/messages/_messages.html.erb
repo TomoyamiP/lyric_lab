@@ -1,7 +1,7 @@
 <ul class="chat" id="messages">
   <% messages.each do |message| %>
     <% unless message.role == 'system' %>
-      <li class="chat-bubble <%= message.role %>">
+      <li class="chat-bubble <%= message.role %>" data-controller="auto-scroll">
         <%= message.content %>
       </li>
     <% end %>
