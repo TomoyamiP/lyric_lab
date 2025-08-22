@@ -81,3 +81,29 @@
   }
 }
 
+/* Glass look + sizing */
+.modal-glass {
+  background: rgba(18, 18, 34, .92);
+  backdrop-filter: blur(10px);
+  color: #eef;
+  border-radius: 16px;
+}
+
+/* Keep header/footer fixed while messages scroll */
+#lyriBot .chat-wrap {
+  max-height: 55vh;
+  overflow: auto;
+  padding: 1rem 1rem 0;   /* space around your messages partial */
+}
+
+/* Ensure composer spans the width */
+#lyriBot .modal-footer .w-100 form { width: 100%; }
+
+/* If you have a fixed bottom navbar, make sure modal sits above it */
+.navbar.fixed-bottom { z-index: 1040; }
+.modal               { z-index: 1080; }
+
+.modal-title {
+  color: #00ffcc;   // neon effect
+  font-size: 1.3rem;
+}
