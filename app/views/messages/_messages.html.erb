@@ -1,0 +1,9 @@
+<ul class="chat" id="messages">
+  <% messages.each do |message| %>
+    <% unless message.role == 'system' %>
+      <li class="chat-bubble <%= message.role %>">
+        <%= message.content %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

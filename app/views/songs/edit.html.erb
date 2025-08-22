@@ -1,19 +1,58 @@
-<div class="container mt-5 d-flex justify-content-center">
-  <div class="col-md-8 col-lg-6">
-    <h1 class="text-center mb-4 title-banner">Edit Song</h1>
-    <%= form_with model: @song, local: true do |form| %>
-      <div class="mb-3">
-        <%= form.label :title %>
-        <%= form.text_field :title, class: "form-control" %>
+<div class="neo-hero">
+  <div class="grain"></div>
+  <div class="grid"></div>
+  <div class="container d-flex justify-content-center pb-5">
+    <div class="col-md-8 col-lg-6">
+      <h1 class="text-center mb-4 title-banner">Edit Song</h1>
+      <div class="glass p-4 rounded">
+        <%= form_with model: @song, local: true do |form| %>
+          <div class="mb-3">
+            <%= form.label :title, class: "form-label fw-bold" %>
+            <%= form.text_field :title, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :generated_lyrics, "Lyrics" %>
+            <%= form.text_area :generated_lyrics, rows: 12, class: "form-control" %>
+          </div>
+          <div class="d-flex justify-content-center mt-4 w-100" style="gap: 3rem; margin-bottom: 1.5rem;">
+            <div class="icon-button-wrapper">
+              <button type="submit" class="icon-button icon-button-save">
+                <i class="fa-solid fa-floppy-disk"></i>
+              </button>
+              <div class="label">Save</div>
+            </div>
+            <div class="icon-button-wrapper">
+              <%= link_to song_path(@song), class: "icon-button icon-button-back" do %>
+                <i class="fa-solid fa-rotate-left"></i>
+              <% end %>
+              <div class="label">Back</div>
+            </div>
+            <div class="icon-button-wrapper">
+              <button type="button" class="icon-button icon-button-lyribot"
+                      data-bs-toggle="modal" data-bs-target="#lyriBot">
+                <i class="fa-solid fa-robot"></i>
+              </button>
+              <div class="label">LyriBot</div>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <div class="mb-3">
-        <%= form.label :generated_lyrics, "Lyrics" %>
-        <%= form.text_area :generated_lyrics, rows: 12, class: "form-control" %>
+      <div class="modal fade" id="lyriBot" tabindex="-1" aria-labelledby="lyriBotLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="lyriBotLabel">LyriBot</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= render "messages/messages", messages: @messages %>
+            </div>
+            <div class="modal-footer align-items-stretch">
+              <%= render "messages/form", song: @song, message: @message %>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="d-flex justify-content-between">
-        <%= form.submit "Save", class: "btn btn-flat btn-primary" %>
-        <%= link_to "Back", songs_path, class: "btn btn-secondary" %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>

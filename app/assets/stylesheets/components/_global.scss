@@ -6,3 +6,16 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+
+:root { --header-h: 64px; }
+
+.navbar.fixed-top {
+  height: var(--header-h);
+}
+
+body {
+  padding-top: var(--header-h);
+}
+
+@media (min-width: 768px){ .neo-hero .list-group { grid-template-columns: 1fr; } }

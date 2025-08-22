@@ -11,12 +11,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :songs do
     resources :messages, only: [:create]
-    member do
-      get  :share
-      post :share
-    end
-    collection do
-      post :bulk
-    end
   end
 end
