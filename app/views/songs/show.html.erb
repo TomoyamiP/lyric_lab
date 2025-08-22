@@ -1,15 +1,17 @@
 <div class="neo-hero">
   <div class="grain"></div>
   <div class="grid"></div>
-  <div class="container d-flex justify-content-center pt-4 pb-5">
-    <div class="col-md-8 col-lg-6 page-top">
-      <!-- Title -->
-      <h1 class="title-banner text-center mb-4"><strong><%= @song.title %></strong></h1>
-      <small style="color:#c9c3ffb3; text-align: left; display: block; margin-bottom: 12px;">
-        Created <%= @song.created_at.strftime("%B") %> <%= @song.created_at.day.ordinalize %>, <%= @song.created_at.year %>
-      </small>
+
+  <div class="safe-pad">
+    <div class="container d-flex justify-content-center pt-4 pb-5">
+      <div class="col-md-8 col-lg-6 page-top">
+        <!-- Title -->
+        <h1 class="title-banner text-center mb-4"><strong><%= @song.title %></strong></h1>
+        <small style="color:#c9c3ffb3; text-align: left; display: block; margin-bottom: 12px;">
+          Created <%= @song.created_at.strftime("%B") %> <%= @song.created_at.day.ordinalize %>, <%= @song.created_at.year %>
+        </small>
       <!-- Metadata -->
-      <div class="glass p-4 mb-4 text-start d-flex align-items-start gap-4">
+      <div class="glass p-4 mb-4 text-start d-flex align-items-start meta-flex">
         <div class="flex-grow-1">
           <h2 class="mb-3" style="font-size:1.25rem; font-weight:600;">
             LyriBot generated this song based on:
@@ -32,7 +34,7 @@
       </div>
       <!-- Icon Buttons -->
       <% if @song.user == current_user %>
-        <div class="d-flex justify-content-center mt-4 w-100" style="gap: 4rem; margin-bottom: 1.5rem;" data-controller="share">
+        <div class="d-flex justify-content-center mt-4 w-100 icon-row gap-3" data-controller="share">
           <!-- Edit -->
           <div class="icon-button-wrapper">
             <%= link_to edit_song_path(@song), class: "icon-button icon-button-edit" do %>
