@@ -1,7 +1,10 @@
 .landing-hero {
+  margin-top: 0;
+  padding-top: 0;
   position: relative;
   min-height: 40vh;
-  background: url('https://res.cloudinary.com/dt4jctqz1/image/upload/v1755830200/microphone-on-a-desk-in-a-dark-studio_rwtuxw.jpg') 34% center/cover no-repeat;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,20) 100%), /* fade overlay */
+  url('https://res.cloudinary.com/dt4jctqz1/image/upload/v1755830200/microphone-on-a-desk-in-a-dark-studio_rwtuxw.jpg') 34% center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -9,6 +12,7 @@
   padding: 2rem;
 
   .hero-title {
+    margin-top: 0;
     width: 64%;
     text-align: right;
     align-self: flex-end;
@@ -62,7 +66,9 @@
 .landing-hero-2 {
   position: relative;
   min-height: 50vh;
-  // background: url('https://res.cloudinary.com/dt4jctqz1/image/upload/v1755594489/technics-turntable_vrlwpc.jpg') center center/cover no-repeat;
+  // background:
+  //   linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0) 30%), // fade at top
+  //   url('https://res.cloudinary.com/dt4jctqz1/image/upload/v1755594489/technics-turntable_vrlwpc.jpg') center center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -76,33 +82,32 @@
     z-index: 2;
   }
 
-.hero2-cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-
-  .card {
-    flex: 0 0 23%; // 4 per row on large screens
-    min-width: 220px;
-
+  .hero2-cards {
     display: flex;
-    flex-direction: column;
-    justify-content: center; // vertical centering of content
-    align-items: center;     // horizontal centering of content
-    text-align: center;      // centers text
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .card {
+      flex: 0 0 23%; // 4 per row on large screens
+      min-width: 220px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center; // vertical centering of content
+      align-items: center;     // horizontal centering of content
+      text-align: center;      // centers text
+    }
   }
 }
 
 // Responsive adjustments for small screens
-@media (max-width: 480px) { // iPhone 16 width
-  .hero2-cards .card {
-    flex: 0 0 48%; // 2 per row
-    min-width: auto;
+  @media (max-width: 480px) { // iPhone 16 width
+    .hero2-cards .card {
+      flex: 0 0 48%; // 2 per row
+      min-width: auto;
+    }
   }
-}
-
-}
 
 // Mobile adjustments
 @media (max-width: 768px) {
