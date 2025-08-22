@@ -50,8 +50,34 @@
   }
 }
 
+.button-row {
+  display: flex;
+  justify-content: space-between; // spreads evenly
+  align-items: center;
+  gap: 1rem; // spacing between buttons
+  margin-top: 1rem;
+  flex-wrap: nowrap;
+}
+
+.button-row .btn {
+  min-width: 90px; // makes all buttons more balanced
+  text-align: center;
+}
+
+.button-row .lyribot {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+  border-radius: 50%;
+  flex: 1;
+  min-width: auto;
+ }
+
 .icon-button-lyribot {
   &:hover {
-    background-color: #6C5CE7;
+    background-color: #6C5CE7; // 紫色 hover
   }
 }
+

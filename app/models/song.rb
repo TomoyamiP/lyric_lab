@@ -19,7 +19,7 @@ class Song < ApplicationRecord
       Mood of the song : #{mood}
       Genre of the song : #{genre}
       Keywords of the song : #{keywords}
-      Provide the title and the lyrics of the song composed in a JSON format with only two keys "title" and "lyrics"
+      Provide the title and the lyrics of the song composed always in a JSON format with only two keys "title" and "lyrics"
     PROMPT
   end
 
