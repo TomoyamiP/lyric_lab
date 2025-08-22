@@ -2,7 +2,7 @@
   <% messages.each do |message| %>
     <% unless message.role == 'system' %>
       <li class="chat-bubble <%= message.role %>" data-controller="auto-scroll">
-        <%= message.content %>
+        <%= raw(render_markdown(message.content)) %>
       </li>
     <% end %>
   <% end %>

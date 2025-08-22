@@ -54,6 +54,9 @@ gem "sassc-rails"
 gem "ruby_llm", git: 'https://github.com/SuzukiRyuichiro/ruby_llm.git'
 gem "cloudinary"
 gem "image_processing", "~> 1.2" # required for Active Storage variants
+gem "kramdown"
+gem "rouge"
+gem "kramdown-parser-gfm"
 
 group :development, :test do
   gem "dotenv-rails"
