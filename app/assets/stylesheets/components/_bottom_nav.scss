@@ -1,0 +1,40 @@
+<% unless controller_name == "pages" && action_name == "home" %>
+  <nav class="bottom-nav glass-nav">
+    <% unless user_signed_in? %>
+      <%= link_to new_user_session_path,
+                  class: "bn-link #{'active' if current_page?(new_user_session_path)}" do %>
+        <i class="bi bi-person"></i>
+        <span>Login</span>
+      <% end %>
+    <% else %>
+      <%= link_to songs_path,
+                  class: "bn-link #{'active' if current_page?(songs_path)}" do %>
+        <i class="bi bi-house"></i>
+        <span>Home</span>
+      <% end %>
+
+      <%= link_to new_song_path,
+                  class: "bn-link #{'active' if current_page?(new_song_path)}" do %>
+        <i class="bi bi-plus-circle"></i>
+        <span>New</span>
+      <% end %>
+
+      <div class="dropup bn-dropup">
+        <button class="bn-link bn-drop-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-gear"></i>
+          <span>Settings</span>
+        </button>
+        <ul class="dropdown-menu bn-dropdown">
+          <li><%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %></li>
+          <li>
+            <%= link_to "Log out",
+                        destroy_user_session_path,
+                        method: :delete,
+                        class: "dropdown-item text-danger js-delete",
+                        data: { url: destroy_user_session_path } %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </nav>
+<% end %>
