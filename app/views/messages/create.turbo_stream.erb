@@ -1,5 +1,5 @@
-<%= turbo_stream.replace "messages" do %>
-  <%= render "messages/messages", messages: @song.messages %>
+<%= turbo_stream.append "messages" do %>
+  <%= render "messages/messages", messages: @song.messages[-3..] %>
 <% end %>
 
 <%= turbo_stream.replace "new_message" do %>
