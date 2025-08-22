@@ -66,14 +66,17 @@
 .landing-hero-2 {
   position: relative;
   min-height: 50vh;
-  // background:
-  //   linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0) 30%), // fade at top
-  //   url('https://res.cloudinary.com/dt4jctqz1/image/upload/v1755594489/technics-turntable_vrlwpc.jpg') center center/cover no-repeat;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0) 50%), /* fade top */
+    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),              /* dark overlay */
+    url('https://res.cloudinary.com/dt4jctqz1/image/upload/v1755844818/turntable-centered-slight-left_szoyrg.jpg')
+      center center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   color: white;
   padding: 2rem;
+
 
   .hero2-title {
     font-family: 'Bebas Neue', sans-serif;
