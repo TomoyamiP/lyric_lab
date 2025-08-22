@@ -3,13 +3,8 @@
   padding-top: 0;
   position: relative;
   min-height: 40vh;
-    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.4)
-    ),
-    url('https://res.cloudinary.com/dt4jctqz1/image/upload/v1755830200/microphone-on-a-desk-in-a-dark-studio_rwtuxw.jpg')
-    34% center/cover no-repeat;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.2) 100%), /* fade overlay */
+    url('https://res.cloudinary.com/dt4jctqz1/image/upload/v1755830200/microphone-on-a-desk-in-a-dark-studio_rwtuxw.jpg') 34% center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -22,7 +17,7 @@
     text-align: right;
     align-self: flex-end;
     text-shadow: 3px 3px 7px black;
-    font-size: clamp(2.5rem, 8vw, 8rem); // scales from small to large screens
+    font-size: clamp(2.5rem, 8vw, 8rem);
   }
 
   .lyribot-container {
@@ -52,11 +47,17 @@
 
     .lyribot-text:last-child {
       font-size: clamp(1rem, 2vw, 1.2rem);
+
+      /* Force always 2 lines */
+      width: 100%;
+      max-width: 200px; /* tweak as needed for desktop */
+      white-space: normal;
+      overflow-wrap: break-word;
     }
   }
 }
 
-/* Responsive adjustments for mobile */
+/* Responsive adjustments for tablet */
 @media (max-width: 768px) {
   .landing-hero {
     .hero-title {
@@ -68,10 +69,27 @@
     }
   }
 }
+
+/* Responsive adjustments for iPhone 16 / small screens */
+@media (max-width: 480px) {
+  .landing-hero {
+    .lyribot-container {
+      width: 100%;       // full width on iPhone
+      align-self: center; // center horizontally
+      padding: 0 1rem;   // optional side padding
+
+      .lyribot-text:last-child {
+        max-width: 100%;  // fill container
+        white-space: normal;
+      }
+    }
+  }
+}
+
+/* Landing Hero 2 */
 .landing-hero-2 {
   position: relative;
   min-height: 50vh;
-
   background:
     linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0) 50%), /* fade top */
     linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),              /* dark overlay */
@@ -82,7 +100,6 @@
   justify-content: flex-end;
   color: white;
   padding: 2rem;
-
 
   .hero2-title {
     font-family: 'Bebas Neue', sans-serif;
@@ -103,22 +120,14 @@
 
       display: flex;
       flex-direction: column;
-      justify-content: center; // vertical centering of content
-      align-items: center;     // horizontal centering of content
+      justify-content: center; // vertical centering
+      align-items: center;     // horizontal centering
       text-align: center;      // centers text
     }
   }
 }
 
-// Responsive adjustments for small screens
-  @media (max-width: 480px) { // iPhone 16 width
-    .hero2-cards .card {
-      flex: 0 0 48%; // 2 per row
-      min-width: auto;
-    }
-  }
-
-// Mobile adjustments
+// Mobile adjustments for Landing Hero 2
 @media (max-width: 768px) {
   .landing-hero-2 {
     .hero2-title {
@@ -131,8 +140,9 @@
     }
   }
 }
-// Responsive adjustments for small screens
-@media (max-width: 480px) { // iPhone 16 width
+
+// iPhone 16 / small screens
+@media (max-width: 480px) {
   .hero2-cards .card {
     flex: 0 0 48%; // 2 per row
     min-width: auto;
