@@ -1,8 +1,8 @@
 <ul class="chat" id="messages">
   <% messages.each do |message| %>
     <% unless message.role == 'system' %>
-      <li class="chat-bubble <%= message.role %>">
-        <%= message.content %>
+      <li class="chat-bubble <%= message.role %>" data-controller="auto-scroll">
+        <%= raw(render_markdown(message.content)) %>
       </li>
     <% end %>
   <% end %>
