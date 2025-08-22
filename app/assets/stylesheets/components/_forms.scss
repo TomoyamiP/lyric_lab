@@ -1,0 +1,60 @@
+.form-control {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #EEEEEE;
+  border-radius: 8px;
+
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #78C841;
+    box-shadow: 0 0 0 0.2rem rgba(120, 200, 65, 0.25);
+    color: #fff;
+  }
+
+  &::placeholder {
+    color: rgba(238, 238, 238, 0.7);
+  }
+}
+
+.form-select {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #EEEEEE;
+  border-radius: 8px;
+
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #78C841;
+    box-shadow: 0 0 0 0.2rem rgba(120, 200, 65, 0.25);
+    color: #fff;
+  }
+
+  option {
+    background-color: #010038;
+    color: #EEEEEE;
+  }
+}
+
+input[type="file"] {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #EEEEEE;
+  border-radius: 8px;
+  padding: 0.4rem;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #EEEEEE;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #78C841;
+    color: #010038;
+  }
+}

@@ -1,9 +1,8 @@
 <div class="neo-hero">
   <div class="grain"></div>
   <div class="grid"></div>
-
-  <div class="container mt-5 d-flex justify-content-center pt-4 pb-5">
-    <div class="col-md-8 col-lg-6" style="margin-top: 32px">
+  <div class="container d-flex justify-content-center pt-4 pb-5">
+    <div class="col-md-8 col-lg-6">
       <h1 class="text-center mb-4 title-banner">Edit Song</h1>
       <div class="glass p-4 rounded">
         <%= form_with model: @song, local: true do |form| %>
@@ -16,7 +15,7 @@
             <%= form.text_area :generated_lyrics, rows: 12, class: "form-control" %>
           </div>
           <div class="d-flex justify-content-center mt-4 w-100" style="gap: 3rem; margin-bottom: 1.5rem;">
-          <div class="icon-button-wrapper">
+            <div class="icon-button-wrapper">
               <button type="submit" class="icon-button icon-button-save">
                 <i class="fa-solid fa-floppy-disk"></i>
               </button>
@@ -38,7 +37,6 @@
           </div>
         <% end %>
       </div>
-
       <div class="modal fade" id="lyriBot" tabindex="-1" aria-labelledby="lyriBotLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content modal-glass border-0">
