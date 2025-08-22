@@ -40,3 +40,13 @@
 .container {
   padding-bottom: 100px;
 }
+
+.join-now-btn {
+  background-color: #5fa832; /* darker default color */
+  color: white;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #78C841; /* hover color */
+  }
+}

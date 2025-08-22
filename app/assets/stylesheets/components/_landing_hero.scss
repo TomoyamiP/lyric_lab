@@ -1,16 +1,125 @@
 .landing-hero {
-  min-height: 80vh; // fills most of the screen height
+  position: relative;
+  min-height: 40vh;
+  background: url('https://res.cloudinary.com/dt4jctqz1/image/upload/v1755830200/microphone-on-a-desk-in-a-dark-studio_rwtuxw.jpg') center center/cover no-repeat;
   display: flex;
   flex-direction: column;
-  justify-content: center; // center vertically
-  align-items: center; // center horizontally
-  text-align: center;
+  justify-content: space-between;
+  color: white;
   padding: 2rem;
 
-  background: linear-gradient(
-              to right,
-              #010038,
-              #1A2A80
-            );
-  color: #EEEEEE;
+  .hero-title {
+    width: 64%;
+    text-align: right;
+    align-self: flex-end;
+    font-size: clamp(2.5rem, 8vw, 8rem); // scales from small to large screens
+  }
+
+  .lyribot-container {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-self: flex-end;
+    text-align: right;
+
+    .lyribot-row {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.5rem;
+      height: 50px;
+
+      .lyribot-text {
+        line-height: 1;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+      }
+
+      .lyribot-icon {
+        flex-shrink: 0;
+      }
+    }
+
+    .lyribot-text:last-child {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+  }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .landing-hero {
+    .hero-title {
+      width: 90%;
+      text-align: right;
+    }
+    .lyribot-container {
+      width: 60%;
+    }
+  }
+}
+.landing-hero-2 {
+  position: relative;
+  min-height: 50vh;
+  background: url('https://res.cloudinary.com/dt4jctqz1/image/upload/v1755594489/technics-turntable_vrlwpc.jpg') center center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+  padding: 2rem;
+
+  .hero2-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    text-align: center;
+    z-index: 2;
+  }
+
+.hero2-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  .card {
+    flex: 0 0 23%; // 4 per row on large screens
+    min-width: 220px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // vertical centering of content
+    align-items: center;     // horizontal centering of content
+    text-align: center;      // centers text
+  }
+}
+
+// Responsive adjustments for small screens
+@media (max-width: 480px) { // iPhone 16 width
+  .hero2-cards .card {
+    flex: 0 0 48%; // 2 per row
+    min-width: auto;
+  }
+}
+
+}
+
+// Mobile adjustments
+@media (max-width: 768px) {
+  .landing-hero-2 {
+    .hero2-title {
+      font-size: clamp(1.5rem, 6vw, 3rem);
+    }
+    .hero2-cards {
+      flex-direction: column; /* stack cards on mobile */
+      align-items: center;    /* center cards in column */
+      gap: 1rem;
+    }
+  }
+}
+// Responsive adjustments for small screens
+@media (max-width: 480px) { // iPhone 16 width
+  .hero2-cards .card {
+    flex: 0 0 48%; // 2 per row
+    min-width: auto;
+  }
 }
