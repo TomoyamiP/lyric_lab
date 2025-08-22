@@ -17,3 +17,18 @@
   width: 32px;
   height: 32px;
 }
+
+.lyribott {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-image: url("https://res.cloudinary.com/dt4jctqz1/image/upload/v1755585958/lyric_lab_logo_pqhhoh.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 0;
+  margin: 0 auto; // centers horizontally, adds spacing below
+}
