@@ -75,12 +75,14 @@
   .landing-hero {
     .lyribot-container {
       width: 100%;       // full width on iPhone
-      align-self: center; // center horizontally
+      align-self: flex-end; // center horizontally
+      text-align: right;
       padding: 0 1rem;   // optional side padding
 
       .lyribot-text:last-child {
         max-width: 100%;  // fill container
         white-space: normal;
+        min-width: 300px;
       }
     }
   }
