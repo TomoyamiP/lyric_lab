@@ -3,7 +3,7 @@
   background-color: #010038;   // dark blue
   padding: 0.25rem 1rem;       // smaller vertical padding
   z-index: 1000;
-  height: 60px;
+  height: 75px;
   display: flex;          // optional: fixes navbar height
 }
 
@@ -59,4 +59,5 @@
 .bottom-nav .nav-link {
   min-width: 72px;
   text-align: center;
+  height: 200px;
 }
