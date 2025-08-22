@@ -1,85 +1,107 @@
-<div class="container mt-5 d-flex justify-content-center pb-5">
-  <div class="col-md-8 col-lg-6">
-    <style>
-      .container .hint,
-      .container .form-text,
-      .container .text-muted {
-        color: #cfd2d6 !important;
-        opacity: 1 !important;
-      }
-    </style>
-    <h2 class="text-center mb-4 title-banner">Edit <%= resource_name.to_s.humanize %></h2>
-    <%= simple_form_for(resource,
-          as: resource_name,
-          url: registration_path(resource_name),
-          html: { method: :put }) do |f| %>
-      <%= f.error_notification %>
-      <div class="mb-3">
-        <%= f.input :username, required: true, autofocus: true, label: "Username" %>
+<div class="neo-hero">
+  <div class="grain"></div>
+  <div class="grid"></div>
+  <div class="container d-flex justify-content-center pb-5">
+    <div class="col-md-8 col-lg-6">
+      <style>
+        .container .form-text,
+        .container .text-muted,
+        .container .hint {
+          color: #cfd2d6 !important;
+          opacity: 1 !important;
+        }
+      </style>
+      <h2 class="text-center mb-4 title-banner">Edit Profile</h2>
+      <div class="glass p-4 rounded">
+        <%= simple_form_for(resource,
+              as: resource_name,
+              url: registration_path(resource_name),
+              html: { method: :put }) do |f| %>
+          <%= f.error_notification %>
+          <div class="mb-3">
+            <%= f.input :username, required: true, autofocus: true, label: "Username" %>
+          </div>
+          <div class="mb-3">
+            <%= f.input :email,
+                  required: true,
+                  label: "Email",
+                  input_html: { autocomplete: "email" } %>
+          </div>
+          <div class="mb-3">
+            <%= f.input :age, required: true, label: "Age" %>
+          </div>
+          <div class="mb-3">
+            <%= f.input :gender, required: true, label: "Gender" %>
+          </div>
+          <div class="mb-3">
+            <%= f.input :music_style,
+                  as: :select,
+                  collection: User::MUSIC_STYLES,
+                  include_blank: "Select a style",
+                  label: "Music style" %>
+          </div>
+          <div class="mb-4">
+            <%= f.input :musician_type,
+                  as: :select,
+                  collection: User::MUSICIAN_TYPES,
+                  include_blank: "Select a type",
+                  label: "Musician type" %>
+          </div>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div class="alert alert-warning mb-4">
+              Currently waiting confirmation for: <strong><%= resource.unconfirmed_email %></strong>
+            </div>
+          <% end %>
+          <div class="mb-3">
+            <%= f.input :password,
+                  label: "New password",
+                  hint: "Leave blank to keep current password",
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+          </div>
+          <div class="mb-3">
+            <%= f.input :password_confirmation,
+                  label: "Confirm new password",
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+          </div>
+          <div class="mb-4">
+            <%= f.input :current_password,
+                  label: "Current password",
+                  hint: "We need your current password to confirm changes",
+                  required: true,
+                  input_html: { autocomplete: "current-password" } %>
+          </div>
+          <!-- Icon-style buttons -->
+          <div class="d-flex justify-content-center gap-4 mt-4">
+            <div class="icon-button-wrapper">
+              <%= button_tag type: "submit", class: "icon-button icon-button-edit" do %>
+                <i class="fa-solid fa-floppy-disk"></i>
+              <% end %>
+              <div class="label">Save</div>
+            </div>
+            <div class="icon-button-wrapper">
+              <%= link_to (request.referer || root_path), class: "icon-button icon-button-back" do %>
+                <i class="fa-solid fa-rotate-left"></i>
+              <% end %>
+              <div class="label">Back</div>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <div class="mb-3">
-        <%= f.input :email, required: true, label: "Email", input_html: { autocomplete: "email" } %>
-      </div>
-      <div class="mb-3">
-        <%= f.input :age, required: true, label: "Age" %>
-      </div>
-      <div class="mb-3">
-        <%= f.input :gender, required: true, label: "Gender" %>
-      </div>
-      <div class="mb-3">
-        <%= f.input :music_style,
-              as: :select,
-              collection: User::MUSIC_STYLES,
-              include_blank: "Select a style",
-              label: "Music style" %>
-      </div>
-      <div class="mb-4">
-        <%= f.input :musician_type,
-              as: :select,
-              collection: User::MUSICIAN_TYPES,
-              include_blank: "Select a type",
-              label: "Musician type" %>
-      </div>
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div class="alert alert-warning mb-4">
-          Currently waiting confirmation for: <strong><%= resource.unconfirmed_email %></strong>
+      <hr class="my-4">
+      <!-- Cancel account -->
+      <div class="d-flex justify-content-center mt-3">
+        <div class="icon-button-wrapper">
+          <%= button_to registration_path(resource_name),
+                method: :delete,
+                data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" },
+                class: "icon-button icon-button-delete js-delete" do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+          <div class="label">Cancel my account</div>
         </div>
-      <% end %>
-      <div class="mb-3">
-        <%= f.input :password,
-              label: "New password",
-              hint: "Leave blank to keep current password",
-              required: false,
-              input_html: { autocomplete: "new-password" },
-              hint_html: { class: "form-text", style: "color:#cfd2d6" } %>
       </div>
-      <div class="mb-3">
-        <%= f.input :password_confirmation,
-              label: "Confirm new password",
-              required: false,
-              input_html: { autocomplete: "new-password" },
-              hint_html: { class: "form-text", style: "color:#cfd2d6" } %>
-      </div>
-      <div class="mb-4">
-        <%= f.input :current_password,
-              label: "Current password",
-              hint: "We need your current password to confirm changes",
-              required: true,
-              input_html: { autocomplete: "current-password" },
-              hint_html: { class: "form-text", style: "color:#cfd2d6" } %>
-      </div>
-      <div class="d-flex gap-2">
-        <%= f.button :submit, "Update", class: "btn btn-flat w-100" %>
-        <%= link_to "Back", (request.referer || root_path), class: "btn btn-secondary" %>
-      </div>
-    <% end %>
-    <hr class="my-4">
-    <div class="d-flex justify-content-center">
-      <%= button_to "Cancel my account",
-            registration_path(resource_name),
-            method: :delete,
-            data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" },
-            class: "btn btn-danger js-delete" %>
     </div>
   </div>
 </div>
