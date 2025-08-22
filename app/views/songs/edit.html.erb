@@ -1,10 +1,8 @@
 <div class="neo-hero">
   <div class="grain"></div>
   <div class="grid"></div>
-
   <div class="container d-flex justify-content-center pt-4 pb-5">
     <div class="col-md-8 col-lg-6">
-
       <h1 class="text-center mb-4 title-banner">Edit Song</h1>
       <div class="glass p-4 rounded">
         <%= form_with model: @song, local: true do |form| %>
@@ -26,7 +24,7 @@
             <div class="icon-button-wrapper">
               <button type="button" class="icon-button icon-button-lyribot"
                       data-bs-toggle="modal" data-bs-target="#lyriBot">
-                <i class="fa-solid fa-robot"></i>
+                <img src="https://res.cloudinary.com/dt4jctqz1/image/upload/v1755585958/lyric_lab_logo_pqhhoh.png" alt="icon" style="width: 56px; height: 56px; object-fit: cover; border-radius: 50%;">
               </button>
               <div class="label">LyriBot</div>
             </div>
@@ -48,13 +46,11 @@
               </h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
             <div class="modal-body p-0">
               <div class="chat-wrap">
                 <%= render "messages/messages", messages: @messages %>
               </div>
             </div>
-
             <div class="modal-footer border-0 w-100">
               <div class="w-100">
                 <%= render "messages/form", song: @song, message: @message %>
