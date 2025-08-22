@@ -69,3 +69,28 @@
   box-shadow: none !important;
   padding: 0;
 }
+
+/* Make desktop look like the mobile narrow column */
+.page-narrow {
+  max-width: 740px;     /* feels like a phone width on desktop */
+  margin: 0 auto;       /* center */
+  padding: 0 16px;      /* safe side-gutters */
+}
+
+.icon-row {
+  max-width: 520px;     /* keep the 4 icon buttons tight */
+  margin: 1rem auto 1.5rem;
+  gap: 2.25rem;
+  flex-wrap: wrap;      /* won’t overflow on smaller windows */
+}
+
+/* (Optional) give the glass cards full width of the narrow column */
+.page-narrow .glass {
+  width: 100%;
+}
+
+/* You can tweak these slightly wider on big screens if you want */
+@media (min-width: 1200px) {
+  .page-narrow { max-width: 780px; }
+  .icon-row   { max-width: 560px; }
+}

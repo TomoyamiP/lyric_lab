@@ -48,5 +48,19 @@
 
   &:hover {
     background-color: #78C841; /* hover color */
+
+.btn-sort {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #f1eefc;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.15);
+
   }
 }

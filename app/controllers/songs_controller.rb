@@ -47,34 +47,31 @@ class SongsController < ApplicationController
   end
 
   def create
-  @song = Song.new(song_params)
-  @song.user = current_user
-
-  if @song.save
-    # Combine possible prompt sources
-    prompt = @song.build_prompt.presence || @song.keywords.presence
-
-    if @song.photo.attached?
-      # Photo alone or photo + prompt
-      process_photo(@song.photo, extra_prompt: prompt)
-    elsif prompt.present?
-      # Prompt only
-      send_question(with: { prompt: prompt })
-    end
-
+    @song = Song.new(song_params)
+    @song.user = current_user
+    if @song.save
+      # Combine possible prompt sources
+      prompt = @song.build_prompt.presence || @song.keywords.presence
+      @response = if @song.photo.attached?
+        # Photo alone or photo + prompt
+                    @response = process_photo(@song.photo, extra_prompt: prompt)
+                  elsif prompt.present?
+        # Prompt only
+                    @response = send_question(with: { prompt: prompt })
+                  end
     # Save AI-generated lyrics & title if response exists
-    if @response&.content.present?
-      response_hash = JSON.parse(@response.content.gsub(/(`|json)/,''))
-      @song.generated_lyrics = response_hash['lyrics']
-      @song.title ||= response_hash['title'] || "Untitled Song"
-      @song.save
-    end
+      if @response&.content.present?
+        response_hash = JSON.parse(@response.content.gsub(/(`|json)/,''))
+        @song.generated_lyrics = response_hash['lyrics']
+        @song.title ||= response_hash['title'] || "Untitled Song"
+        @song.save
+      end
 
-    redirect_to song_path(@song)
-  else
-    render :new, status: :unprocessable_entity
+      redirect_to song_path(@song)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
-end
 
 # Process attached photo (or PDF) with optional extra prompt
 def process_photo(photo, extra_prompt: nil)

@@ -18,6 +18,7 @@
   height: 32px;
 }
 
+
 /* LyriBot container inside hero */
 .lyribot-container {
   display: flex;
@@ -36,7 +37,9 @@
 }
 
 /* Override your previous .lyribot styles for flex layout */
-.lyribot {
+
+.lyribott {
+
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -45,6 +48,7 @@
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
+
   display: block; /* keep block for image sizing */
   margin: 0;      /* remove auto centering so flex works */
 }
@@ -53,4 +57,10 @@
   margin: 0;
   font-size: 1rem;
   line-height: 1.2;
+
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 0;
+  margin: 0 auto; // centers horizontally, adds spacing below
+
 }

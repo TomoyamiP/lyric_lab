@@ -1,12 +1,15 @@
 <div class="neo-hero">
   <div class="grain"></div>
   <div class="grid"></div>
-  <div class="container mt-5 d-flex justify-content-center pt-4 pb-5">
+
+ <div class="safe-pad">
+  <div class="container d-flex justify-content-center pt-4 pb-5">
+
     <div class="col-md-8 col-lg-6">
       <h1 class="text-center mb-4 title-banner"><strong>Turn Your Feelings into Music</strong></h1>
       <div class="glass p-4 rounded">
         <%= simple_form_for @song do |f| %>
-          <!-- Mood input -->
+          <!-- Mood -->
           <div class="form-group mb-3">
             <%= f.label :mood, "Mood", class: "form-label fw-bold" %>
             <%= f.input :mood,
@@ -18,19 +21,18 @@
                     class: "form-control"
                   } %>
           </div>
-          <!-- Genre input -->
+          <!-- Genre -->
           <div class="form-group mb-3">
             <%= f.label :genre, "Genre", class: "form-label fw-bold" %>
             <%= f.input :genre,
-                  as: :text,
-                  label: false,
-                  input_html: {
-                    placeholder: "What genre should the song be?",
-                    rows: 3,
-                    class: "form-control"
-                  } %>
+                as: :select,
+                collection: User::MUSIC_STYLES,
+                prompt: "What genre should the song be?",
+                include_blank: false,
+                label: false,
+                input_html: { class: "form-select" } %>
           </div>
-          <!-- Keywords input -->
+          <!-- Keywords -->
           <div class="form-group mb-4">
             <%= f.label :keywords, "Keywords", class: "form-label fw-bold" %>
             <%= f.input :keywords,
@@ -51,8 +53,13 @@
                   input_html: { class: "form-control" } %>
           </div>
           <!-- Submit -->
-          <div class="form-actions">
-            <%= f.button :submit, "Create", class: "btn btn-flat w-100" %>
+          <div class="form-actions d-flex justify-content-center mt-4">
+            <div class="icon-button-wrapper">
+              <button type="submit" class="icon-button icon-button-save">
+                <i class="fa-solid fa-music"></i>
+              </button>
+              <div class="label">Create</div>
+            </div>
           </div>
         <% end %>
       </div>

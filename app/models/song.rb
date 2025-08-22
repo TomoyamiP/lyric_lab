@@ -19,12 +19,13 @@ class Song < ApplicationRecord
       Mood of the song : #{mood}
       Genre of the song : #{genre}
       Keywords of the song : #{keywords}
-      Provide the title and the lyrics of the song composed in a JSON format with only two keys "title" and "lyrics"
+      Provide the title and the lyrics of the song composed always in a JSON format with only two keys "title" and "lyrics"
     PROMPT
   end
 
   def chat_prompt
     instructions = <<~INSTRUCTIONS
+      Your name is LyriBot
       You are a lyrical genius who can compose songs with just any prompts
       I am a #{user.musician_type} at #{user.music_style} music
       You helped me compose a song with these prompts
