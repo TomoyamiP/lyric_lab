@@ -18,7 +18,28 @@
   height: 32px;
 }
 
+
+/* LyriBot container inside hero */
+.lyribot-container {
+  display: flex;
+  flex-direction: column;       // stack icon + text vertically if needed
+  align-items: flex-end;        // align content to the right
+  max-width: 33.33%;            // 1/3 of screen
+  gap: 0.5rem;
+  margin: 0;                    // remove auto centering
+}
+
+
+.lyribot-icon {
+  margin: 0;            /* remove any default margins */
+  padding: 0;           /* remove extra padding */
+  flex-shrink: 0;       /* keep icon size fixed */
+}
+
+/* Override your previous .lyribot styles for flex layout */
+
 .lyribott {
+
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -27,8 +48,19 @@
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
+
+  display: block; /* keep block for image sizing */
+  margin: 0;      /* remove auto centering so flex works */
+}
+
+.lyribot-text p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.2;
+
   display: inline-block;
   vertical-align: middle;
   margin-top: 0;
   margin: 0 auto; // centers horizontally, adds spacing below
+
 }

@@ -41,6 +41,14 @@
   padding-bottom: 100px;
 }
 
+.join-now-btn {
+  background-color: #5fa832; /* darker default color */
+  color: white;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #78C841; /* hover color */
+
 .btn-sort {
   display: inline-block;
   padding: 0.6rem 1.2rem;
@@ -53,5 +61,6 @@
   &:hover {
     transform: scale(1.05);
     background: rgba(255, 255, 255, 0.15);
+
   }
 }
