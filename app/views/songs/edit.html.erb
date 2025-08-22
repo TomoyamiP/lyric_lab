@@ -39,18 +39,26 @@
         <% end %>
       </div>
 
-      <div class="modal fade" id="lyriBot" tabindex="-1" aria-labelledby="lyriBotLabel"  aria-hidden="true">
-        <div class="modal-dialog modal-dialog modal-dialog-scrollable">
-          <div class="modal-content">
+      <div class="modal fade" id="lyriBot" tabindex="-1" aria-labelledby="lyriBotLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content modal-glass border-0">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="lyriBotLabel">LyriBot</h1>
+              <h5 class="modal-title mb-0 d-flex" id="lyriBotLabel">
+                <span class="lyribot mb-0 me-2"></span>LyriBot
+              </h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              <%= render "messages/messages", messages: @messages %>
+
+            <div class="modal-body p-0">
+              <div class="chat-wrap"  data-controller="auto-scroll">
+                <%= render "messages/messages", messages: @messages %>
+              </div>
             </div>
-            <div class="modal-footer align-items-stretch">
-              <%= render "messages/form", song: @song, message: @message %>
+
+            <div class="modal-footer border-0 w-100">
+              <div class="w-100">
+                <%= render "messages/form", song: @song, message: @message %>
+              </div>
             </div>
           </div>
         </div>
