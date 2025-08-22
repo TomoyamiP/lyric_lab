@@ -25,6 +25,7 @@ class Song < ApplicationRecord
 
   def chat_prompt
     instructions = <<~INSTRUCTIONS
+      Your name is LyriBot
       You are a lyrical genius who can compose songs with just any prompts
       I am a #{user.musician_type} at #{user.music_style} music
       You helped me compose a song with these prompts
