@@ -32,7 +32,7 @@
       </div>
       <!-- Icon Buttons: Edit, Share, Back, Delete -->
       <% if @song.user == current_user %>
-        <div class="d-flex justify-content-center mt-4 w-100" style="gap: 4rem; margin-bottom: 1.5rem;">
+        <div class="d-flex justify-content-center mt-4 w-100" style="gap: 4rem; margin-bottom: 1.5rem;" data-controller="share">
           <!-- Edit -->
           <div class="icon-button-wrapper">
             <%= link_to edit_song_path(@song), class: "icon-button icon-button-edit" do %>
