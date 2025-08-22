@@ -2,18 +2,20 @@
   <div class="grain"></div>
   <div class="grid"></div>
 
- <div class="safe-pad">
   <div class="container d-flex justify-content-center pb-5">
+ <div class="safe-pad">
+  <div class="container d-flex justify-content-center pb-5 mb-5 mt-3">
+
     <div class="col-md-8 col-lg-6">
       <h1 class="title-banner text-center mb-4">Songs</h1>
-      <div class="text-center mb-3">
-        <div class="btn-group mt-3 mb-3 w-100">
+      <div class="text-center mb-4">
+        <div class="d-flex justify-content-center gap-3">
           <%= link_to "Sort by Date",
-                songs_path(sort: "date", direction: params[:direction] == "asc" ? "desc" : "asc"),
-                class: "btn btn-outline-light" %>
+          songs_path(sort: "date", direction: params[:direction] == "asc" ? "desc" : "asc"),
+          class: "glass btn-sort" %>
           <%= link_to "Sort Alphabetically",
-                songs_path(sort: "alpha", direction: params[:direction] == "asc" ? "desc" : "asc"),
-                class: "btn btn-outline-light" %>
+          songs_path(sort: "alpha", direction: params[:direction] == "asc" ? "desc" : "asc"),
+          class: "glass btn-sort" %>
         </div>
       </div>
       <% if @songs.any? %>
