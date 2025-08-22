@@ -1,7 +1,7 @@
 <div class="neo-hero">
   <div class="grain"></div>
   <div class="grid"></div>
-  <div class="container d-flex justify-content-center pb-5">
+  <div class="container d-flex justify-content-center pt-4 pb-5">
     <div class="col-md-8 col-lg-6">
       <h1 class="text-center mb-4 title-banner"><strong>Turn Your Feelings into Music</strong></h1>
       <div class="glass p-4 rounded">
@@ -20,7 +20,7 @@
           </div>
           <div class="form-group mb-3">
             <%= f.label :genre, "Genre", class: "form-label fw-bold" %>
-          <%= f.input :genre,
+            <%= f.input :genre,
                 as: :select,
                 collection: User::MUSIC_STYLES,
                 prompt: "What genre should the song be?",
@@ -51,8 +51,8 @@
           <div class="form-actions">
             <%= f.button :submit, "Create", class: "btn btn-flat w-100" %>
           </div>
-      </div>
-    <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

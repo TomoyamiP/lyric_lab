@@ -18,7 +18,9 @@
     <link rel="apple-touch-icon" href="/icons/icon-192.png">
   </head>
   <body>
-    <%= render "shared/navbar" %>
+    <% unless controller_name == "pages" && action_name == "home" %>
+      <%= render "shared/navbar" %>
+    <% end %>
     <%= render "shared/flashes" %>
     <%= render "shared/bottom_nav" %>
     <script>
