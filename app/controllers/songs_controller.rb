@@ -59,7 +59,6 @@ class SongsController < ApplicationController
         # Prompt only
                     @response = send_question(with: { prompt: prompt })
                   end
-      raise
     # Save AI-generated lyrics & title if response exists
       if @response&.content.present?
         response_hash = JSON.parse(@response.content.gsub(/(`|json)/,''))

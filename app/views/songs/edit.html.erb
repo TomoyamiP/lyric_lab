@@ -15,20 +15,29 @@
             <%= form.label :generated_lyrics, "Lyrics" %>
             <%= form.text_area :generated_lyrics, rows: 12, class: "form-control" %>
           </div>
-          <div class="d-flex justify-content-between align-items-center mt-3 button-row">
-            <%= form.submit "Save", class: "btn btn-success" %>
-
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#lyriBot">
-              <span class="lyribott"></span>
-            </button>
-
-            <%= link_to "Back", song_path(@song), class: "btn btn-secondary" %>
+          <div class="d-flex justify-content-center mt-4 w-100" style="gap: 3rem; margin-bottom: 1.5rem;">
+          <div class="icon-button-wrapper">
+              <button type="submit" class="icon-button icon-button-save">
+                <i class="fa-solid fa-floppy-disk"></i>
+              </button>
+              <div class="label">Save</div>
+            </div>
+            <div class="icon-button-wrapper">
+              <button type="button" class="icon-button icon-button-lyribot"
+                      data-bs-toggle="modal" data-bs-target="#lyriBot">
+                <i class="fa-solid fa-robot"></i>
+              </button>
+              <div class="label">LyriBot</div>
+            </div>
+            <div class="icon-button-wrapper">
+              <%= link_to song_path(@song), class: "icon-button icon-button-back" do %>
+                <i class="fa-solid fa-rotate-left"></i>
+              <% end %>
+              <div class="label">Back</div>
+            </div>
           </div>
         <% end %>
       </div>
-
-      <%# <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#lyriBot"> %>
-      <%# </button> %>
 
       <div class="modal fade" id="lyriBot" tabindex="-1" aria-labelledby="lyriBotLabel"  aria-hidden="true">
         <div class="modal-dialog modal-dialog modal-dialog-scrollable">
