@@ -28,15 +28,15 @@
                 <%= song.created_at.strftime("%b %d, %Y") %> ・
                 <%= song.genre.presence || "N/A" %>
               </div>
-              <div class="song-actions d-flex justify-content-center" style="gap: 2rem;">
+              <div class="song-actions d-flex justify-content-center" style="gap: 0.75rem;">
                 <div class="icon-button-wrapper">
-                  <%= link_to edit_song_path(song), class: "icon-button icon-button-edit" do %>
+                  <%= link_to edit_song_path(song), class: "icon-button icon-button-edit", style:"width:46px; height:46px;" do %>
                     <i class="fa-solid fa-pen-to-square"></i>
                   <% end %>
                   <div class="label">Edit</div>
                 </div>
                 <div class="icon-button-wrapper">
-                  <button class="icon-button icon-button-share"
+                  <button style="width:46px; height:46px;" class="icon-button icon-button-share"
                           data-action="click->share#share"
                     data-song-id="<%= song.id %>"
                     data-title="<%= song.title %>">
@@ -45,7 +45,7 @@
                   <div class="label">Share</div>
                 </div>
                 <div class="icon-button-wrapper">
-                  <button class="icon-button icon-button-delete js-delete"
+                  <button style="width:46px; height:46px;" class="icon-button icon-button-delete js-delete"
                           data-url="<%= song_path(song) %>">
                     <i class="fa-solid fa-trash"></i>
                   </button>
