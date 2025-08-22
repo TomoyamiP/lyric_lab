@@ -1,14 +1,15 @@
 <div class="neo-hero">
   <div class="grain"></div>
   <div class="grid"></div>
-  <div class="container mt-5 d-flex justify-content-center pt-4 pb-5">
-    <div class="col-md-8 col-lg-6" style="margin-top: 32px">
+  <div class="container d-flex justify-content-center pt-4 pb-5">
+    <div class="col-md-8 col-lg-6 page-top">
+      <!-- Title -->
       <h1 class="title-banner text-center mb-4"><strong><%= @song.title %></strong></h1>
       <small style="color:#c9c3ffb3; text-align: left; display: block; margin-bottom: 12px;">
         Created <%= @song.created_at.strftime("%B") %> <%= @song.created_at.day.ordinalize %>, <%= @song.created_at.year %>
       </small>
+      <!-- Metadata -->
       <div class="glass p-4 mb-4 text-start d-flex align-items-start gap-4">
-        <!-- LyriBot Metadata -->
         <div class="flex-grow-1">
           <h2 class="mb-3" style="font-size:1.25rem; font-weight:600;">
             LyriBot generated this song based on:
@@ -17,20 +18,19 @@
           <p class="mb-1"><strong>Genre:</strong> <%= @song.genre.presence || "N/A" %></p>
           <p class="mb-0"><strong>Keywords:</strong> <%= @song.keywords.presence || "N/A" %></p>
         </div>
-        <!-- Uploaded Photo -->
         <% if @song.photo.attached? %>
           <div class="text-center" style="max-width: 250px;">
             <%= image_tag @song.photo,
-            class: "img-fluid rounded shadow mb-2",
-            style: "width: 100%; height: auto; object-fit: cover;",
-            alt: "Song Image" %>
+              class: "img-fluid rounded shadow mb-2",
+              style: "width: 100%; height: auto; object-fit: cover;",
+              alt: "Song Image" %>
             <p class="mb-0" style="font-size:0.9rem; font-weight:500; color:#EEEEEE;">
               Image used for lyrics generation:
             </p>
           </div>
         <% end %>
       </div>
-      <!-- Icon Buttons: Edit, Share, Back, Delete -->
+      <!-- Icon Buttons -->
       <% if @song.user == current_user %>
         <div class="d-flex justify-content-center mt-4 w-100" style="gap: 4rem; margin-bottom: 1.5rem;" data-controller="share">
           <!-- Edit -->
@@ -40,7 +40,6 @@
             <% end %>
             <div class="label">Edit</div>
           </div>
-          <!-- Share -->
           <div class="icon-button-wrapper">
             <button class="icon-button icon-button-share"
                     data-action="click->share#share"
@@ -50,14 +49,12 @@
             </button>
             <div class="label">Share</div>
           </div>
-          <!-- Back -->
           <div class="icon-button-wrapper">
             <%= link_to songs_path, class: "icon-button icon-button-back" do %>
               <i class="fa-solid fa-rotate-left"></i>
             <% end %>
             <div class="label">Back</div>
           </div>
-          <!-- Delete -->
           <div class="icon-button-wrapper">
             <button class="icon-button icon-button-delete js-delete"
                     data-url="<%= song_path(@song) %>">
@@ -67,7 +64,7 @@
           </div>
         </div>
       <% end %>
-      <!-- Generated Lyrics -->
+      <!-- Lyrics -->
       <div class="glass p-4 mb-4 flex-grow-1">
         <% @song.generated_lyrics.to_s.split("\n").each do |line| %>
           <p class="mb-2"><%= line %></p>
