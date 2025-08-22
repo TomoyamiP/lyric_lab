@@ -14,7 +14,7 @@ html, body {
   height: var(--header-h);
 }
 
-body {
+body:not(:has(.landing-hero)) {
   padding-top: var(--header-h);
 }
 

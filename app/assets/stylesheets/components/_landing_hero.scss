@@ -1,7 +1,7 @@
 .landing-hero {
   position: relative;
   min-height: 40vh;
-  background: url('https://res.cloudinary.com/dt4jctqz1/image/upload/v1755830200/microphone-on-a-desk-in-a-dark-studio_rwtuxw.jpg') center center/cover no-repeat;
+  background: url('https://res.cloudinary.com/dt4jctqz1/image/upload/v1755830200/microphone-on-a-desk-in-a-dark-studio_rwtuxw.jpg') 34% center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -12,6 +12,7 @@
     width: 64%;
     text-align: right;
     align-self: flex-end;
+    text-shadow: 3px 3px 7px black;
     font-size: clamp(2.5rem, 8vw, 8rem); // scales from small to large screens
   }
 
@@ -61,7 +62,7 @@
 .landing-hero-2 {
   position: relative;
   min-height: 50vh;
-  background: url('https://res.cloudinary.com/dt4jctqz1/image/upload/v1755594489/technics-turntable_vrlwpc.jpg') center center/cover no-repeat;
+  // background: url('https://res.cloudinary.com/dt4jctqz1/image/upload/v1755594489/technics-turntable_vrlwpc.jpg') center center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
