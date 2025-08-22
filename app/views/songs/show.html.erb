@@ -1,32 +1,38 @@
 <div class="neo-hero">
   <div class="grain"></div>
   <div class="grid"></div>
-  <div class="container mt-4 d-flex justify-content-center pt-4 pb-5">
-    <div class="col-md-8 col-lg-6" style="margin-top: 40px">
-      <h1 class="title-banner text-center mb-4"><%= @song.title %></h1>
-      <!-- Song Metadata -->
-      <div class="d-flex justify-content-center">
-        <div class="glass p-4 mb-4 text-center w-100">
+  <div class="container mt-5 d-flex justify-content-center pt-4 pb-5">
+    <div class="col-md-8 col-lg-6" style="margin-top: 32px">
+      <h1 class="title-banner text-center mb-4"><strong><%= @song.title %></strong></h1>
+      <small style="color:#c9c3ffb3; text-align: left; display: block; margin-bottom: 12px;">
+        Created <%= @song.created_at.strftime("%B") %> <%= @song.created_at.day.ordinalize %>, <%= @song.created_at.year %>
+      </small>
+      <div class="glass p-4 mb-4 text-start d-flex align-items-start gap-4">
+        <!-- LyriBot Metadata -->
+        <div class="flex-grow-1">
           <h2 class="mb-3" style="font-size:1.25rem; font-weight:600;">
-            LyriBot has generated this song based on:
+            LyriBot generated this song based on:
           </h2>
           <p class="mb-1"><strong>Mood:</strong> <%= @song.mood.presence || "N/A" %></p>
           <p class="mb-1"><strong>Genre:</strong> <%= @song.genre.presence || "N/A" %></p>
           <p class="mb-0"><strong>Keywords:</strong> <%= @song.keywords.presence || "N/A" %></p>
         </div>
-      </div>
-      <!-- Uploaded Photo -->
-      <% if @song.photo.attached? %>
-        <div class="d-flex justify-content-center">
-          <div class="glass p-4 mb-4 text-center w-100">
-            <strong>Uploaded Image:</strong><br>
-            <%= image_tag @song.photo, class: "img-fluid rounded shadow mt-2", alt: "Song Image" %>
+        <!-- Uploaded Photo -->
+        <% if @song.photo.attached? %>
+          <div class="text-center" style="max-width: 250px;">
+            <%= image_tag @song.photo,
+            class: "img-fluid rounded shadow mb-2",
+            style: "width: 100%; height: auto; object-fit: cover;",
+            alt: "Song Image" %>
+            <p class="mb-0" style="font-size:0.9rem; font-weight:500; color:#EEEEEE;">
+              Image used for lyrics generation:
+            </p>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
       <!-- Icon Buttons: Edit, Share, Back, Delete -->
       <% if @song.user == current_user %>
-        <div class="d-flex justify-content-center mt-4 w-100" style="gap: 4rem;">
+        <div class="d-flex justify-content-center mt-4 w-100" style="gap: 4rem; margin-bottom: 1.5rem;">
           <!-- Edit -->
           <div class="icon-button-wrapper">
             <%= link_to edit_song_path(@song), class: "icon-button icon-button-edit" do %>
@@ -62,12 +68,10 @@
         </div>
       <% end %>
       <!-- Generated Lyrics -->
-      <div class="d-flex justify-content-center">
-        <div class="glass p-4 mb-4 w-100">
-          <% @song.generated_lyrics.to_s.split("\n").each do |line| %>
-            <p class="mb-2"><%= line %></p>
-          <% end %>
-        </div>
+      <div class="glass p-4 mb-4 flex-grow-1">
+        <% @song.generated_lyrics.to_s.split("\n").each do |line| %>
+          <p class="mb-2"><%= line %></p>
+        <% end %>
       </div>
     </div>
   </div>
