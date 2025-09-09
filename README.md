@@ -25,6 +25,29 @@ LyricLab is a creative web app that helps users turn ideas, moods, and images in
 
 ⸻
 
+## 📸 Screenshots
+
+Here’s a look at LyricLab in action:  
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://res.cloudinary.com/dt4jctqz1/image/upload/v1757422982/IMG_4345_hutazr.png" width="300"><br>
+      <b>Dashboard</b>
+    </td>
+    <td align="center">
+      <img src="https://res.cloudinary.com/dt4jctqz1/image/upload/v1757422983/IMG_4348_glcg2m.png" width="300"><br>
+      <b>Create</b>
+    </td>
+    <td align="center">
+      <img src="https://res.cloudinary.com/dt4jctqz1/image/upload/v1757422983/IMG_4346_pabaxz.png" width="300"><br>
+      <b>Show</b>
+    </td>
+  </tr>
+</table>
+
+⸻
+
 🚀 Getting Started
 
 Prerequisites
